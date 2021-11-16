@@ -11,7 +11,7 @@ class MainAdapter(private val jobList:List<Job>): RecyclerView.Adapter<MainAdapt
         :RecyclerView.ViewHolder(itemBinding.root){
             fun bindItem(job:Job) {
                 itemBinding.tvJob.text = job.job
-                itemBinding.tvPlace.text = job.place
+                itemBinding.tvPlace.append(job.place)
                 itemBinding.tvStatus.append(job.status)
             }
         }

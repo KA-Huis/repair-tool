@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import com.example.repairtool.Job
 import com.example.repairtool.JobList
 import com.example.repairtool.MainAdapter
 import com.example.repairtool.R

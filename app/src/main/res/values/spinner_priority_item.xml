@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="priority_array">
+        <item></item>
+        <item>Hoog</item>
+        <item>Midden</item>
+        <item>Laag</item>
+    </string-array>
+</resources>
