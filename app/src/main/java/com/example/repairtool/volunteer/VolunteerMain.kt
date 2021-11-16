@@ -1,5 +1,6 @@
 package com.example.repairtool.volunteer
 
+import android.R.attr
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,10 @@ import com.example.repairtool.JobList
 import com.example.repairtool.MainAdapter
 import com.example.repairtool.R
 import com.example.repairtool.databinding.ActivityVolunteerMainBinding
+import android.R.attr.data
+
+
+
 
 class VolunteerMain : AppCompatActivity() {
 
@@ -22,6 +27,8 @@ class VolunteerMain : AppCompatActivity() {
         setContentView(binding?.root)
         val adapter = MainAdapter(JobList.jobList)
         binding?.rvVolunteerMain?.adapter = adapter
+
+        //Updating view
 
         //Creating fields
         var btnRepair:Button = findViewById(R.id.btn_reg_repair)

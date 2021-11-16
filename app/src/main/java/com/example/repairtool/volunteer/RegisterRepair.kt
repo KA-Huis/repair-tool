@@ -1,5 +1,6 @@
 package com.example.repairtool.volunteer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -26,7 +27,8 @@ class RegisterRepair : AppCompatActivity() {
         val btnSendRepair:Button = findViewById(R.id.btn_send_repair)
         btnSendRepair.setOnClickListener {
             addRepair()
-            finish()
+            val intent = Intent(this, VolunteerMain::class.java)
+            startActivity(intent)
         }
         createPrioritySpinner()
         createPlaceSpinner()
