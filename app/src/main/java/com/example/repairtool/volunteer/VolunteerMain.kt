@@ -16,7 +16,6 @@ class VolunteerMain : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_volunteer_main)//TODO not necessary
 
         //Inflate binding
         binding = ActivityVolunteerMainBinding.inflate(layoutInflater)

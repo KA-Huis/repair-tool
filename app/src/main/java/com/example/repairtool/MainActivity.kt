@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
         val etPassword:EditText = findViewById(R.id.et_password)
 
         btnLogin.setOnClickListener {
-            if(etUName.text.isEmpty()&&etPassword.text.isEmpty()) {
-                Toast.makeText(this, "No username or password entered!", Toast.LENGTH_SHORT).show()
-            }else{
+//            if(etUName.text.isEmpty()&&etPassword.text.isEmpty()) {
+//                Toast.makeText(this, "No username or password entered!", Toast.LENGTH_SHORT).show()
+//            }else{
                 val intent = Intent(this, VolunteerMain::class.java)
                 startActivity(intent)
                 finish()
-            }
+//            }
         }
     }
 }

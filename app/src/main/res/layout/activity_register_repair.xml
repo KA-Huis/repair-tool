@@ -36,7 +36,6 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_short_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nieuwe reparatie aanmelden"
@@ -51,7 +50,7 @@
         android:layout_marginTop="20dp">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_repair_description"
+            android:id="@+id/et_short_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Korte omschrijving"

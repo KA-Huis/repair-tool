@@ -25,7 +25,7 @@ class RegisterRepair : AppCompatActivity() {
 
         val btnSendRepair:Button = findViewById(R.id.btn_send_repair)
         btnSendRepair.setOnClickListener {
-//            addRepair()
+            addRepair()
             finish()
         }
         createPrioritySpinner()
@@ -34,10 +34,11 @@ class RegisterRepair : AppCompatActivity() {
     }
 
     private fun addRepair() {//TODO make functional
-        var shortDescription:TextView = findViewById(R.id.tv_short_description)
+        val shortDescription:TextView = findViewById(R.id.et_short_description)
+        val place:Spinner = findViewById(R.id.sp_place)
         var addedJob = Job(
-            1, "Lamp",1, "Plaats", "", "Geregistreerd")
-        JobList.addJob(addedJob)
+            1, shortDescription.text.toString(),1, place.selectedItem.toString(), "", "Geregistreerd")
+        JobList.jobList.add(addedJob)
     }
 
     private fun createPrioritySpinner() {
