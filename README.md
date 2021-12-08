@@ -4,7 +4,7 @@ Repair tool built for KA-Huis.
 
 ## Overview
 
-The application is built wusing Kotlin.
+The application is built using Kotlin.
 
 ## Setup
 
