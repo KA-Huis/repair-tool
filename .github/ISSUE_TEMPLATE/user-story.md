@@ -18,6 +18,6 @@ Schrijf een korte omschrijving met bijvoorbeeld de context ter ondersteuning van
 1. Criteria 1
 2. Criteria 2 ...
 
-### Hupmiddelen
+### Hulpmiddelen
 
 Hier kunnen eventueel hulpmiddelen bijgesloten worden.
