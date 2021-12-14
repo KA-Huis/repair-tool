@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">RepairToolCompose</string>
-    <string name="title_activity_login">Login</string>
+    <string name="app_name">RepairTool</string>
+    <string name="Login">Login</string>
 </resources>
