@@ -14,12 +14,11 @@
             android:screenOrientation="portrait"
             android:exported="true" />
         <activity
-            android:name=".volunteer.VolunteerMain"
-            android:screenOrientation="portrait"
-            android:exported="true" />
+            android:name=".Login"
+            android:exported="false"
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

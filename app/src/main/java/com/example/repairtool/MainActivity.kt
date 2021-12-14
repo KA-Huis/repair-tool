@@ -1,4 +1,4 @@
-package com.example.repairtoolcompose
+package com.example.repairtool
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.repairtoolcompose.ui.theme.RepairToolComposeTheme
+import com.example.repairtool.ui.theme.RepairToolComposeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

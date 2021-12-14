@@ -1,4 +1,4 @@
-package com.example.repairtoolcompose.ui.theme
+package com.example.repairtool.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

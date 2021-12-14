@@ -1,4 +1,4 @@
-package com.example.repairtoolcompose.ui.theme
+package com.example.repairtool.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
