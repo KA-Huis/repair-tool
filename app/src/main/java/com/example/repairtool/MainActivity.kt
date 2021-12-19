@@ -4,15 +4,23 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.BlendMode.Companion.Color
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.example.repairtool.login.Login
 import com.example.repairtool.ui.theme.RepairToolComposeTheme
+import com.google.android.material.textfield.TextInputEditText
+import androidx.compose.ui.unit.dp as dp1
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,40 +29,90 @@ class MainActivity : ComponentActivity() {
             RepairToolComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    Layout()
+                    if (Login("username", "password"))
+                        //TODO do stuff
+                        print("Hi!")
+                    //else if password forgotten, do stuff
+                    //else, username / password is incorrect
                 }
+            }
+        }
+    }
+}
+@Composable
+private fun Layout(){
+    Column(
+        modifier = Modifier
+            .fillMaxHeight()
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        //Login view for app
+        Spacer(modifier = Modifier.padding(20.dp1))
+        Image(painter = painterResource(R.drawable.login_icon),
+            contentDescription = "Login Icon",
+            modifier = Modifier
+                .size(200.dp1)
+                .padding(16.dp1)
+        )
+
+        //Get username AND password
+        GetUsername()
+        GetPassword()
+        
+        Spacer(modifier = Modifier.padding(top = 30.dp1))
+        
+        //Login button AND forgot password button
+        Row(
+            
+        ) {
+            Button(onClick = { /*TODO*/ },
+            colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+            ) {
+                Text(text = "Login")
+            }
+            
+            Spacer(modifier = Modifier.padding(2.dp1))
+            
+            Button(onClick = { /*TODO*/ },
+            colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
+            ) {
+                Text(text = "Forgot password")
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Column {
-        Text(
-            color = MaterialTheme.colors.primary,
-            text = "Hello $name!")
-        Button(
-            onClick = { /* ... */ },
-            // Uses ButtonDefaults.ContentPadding by default
-            contentPadding = PaddingValues(
-                start = 20.dp,
-                top = 12.dp,
-                end = 20.dp,
-                bottom = 12.dp
-            )
-        ) {
-            // Inner content including an icon and a text label
-            Icon(
-                Icons.Filled.Favorite,
-                contentDescription = "Favorite",
-                modifier = Modifier.size(ButtonDefaults.IconSize)
-            )
-            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-            Text("Like",
-            color = MaterialTheme.colors.primaryVariant)
-        }
-    }
+private fun GetUsername() {
+    var text by remember { mutableStateOf("")}
+
+    TextField(
+        value = text,
+        onValueChange = { text = it},
+        label = { Text("Username")},
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = androidx.compose.ui.graphics.Color.Transparent
+        ),
+        modifier = Modifier.padding(2.dp1)
+    )
+}
+
+@Composable
+private fun GetPassword() {
+    var text by remember { mutableStateOf("")}
+
+    TextField(
+        value = text,
+        onValueChange = { text = it},
+        label = { Text("Password") },
+        visualTransformation = PasswordVisualTransformation(),
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = androidx.compose.ui.graphics.Color.Transparent
+        ),
+        modifier = Modifier.padding(2.dp1)
+    )
 }
 
 @Preview(
@@ -67,8 +125,9 @@ fun Greeting(name: String) {
     name = "DarkMode"
 )
 @Composable
-fun DefaultPreview() {
+private fun DefaultPreview() {
     RepairToolComposeTheme {
-        Greeting("Android")
+        Layout()
+//        Test("Android")
     }
 }
