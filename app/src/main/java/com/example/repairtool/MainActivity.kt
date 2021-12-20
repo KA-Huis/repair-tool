@@ -11,22 +11,15 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.repairtool.ui.theme.RepairToolComposeTheme
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.example.repairtool.login.getPassword
 import com.example.repairtool.login.getUsername
-import com.example.repairtool.utilities.navigation.LoginNavigation
+import com.example.repairtool.utilities.navigation.LoginToRepairList
 import com.example.repairtool.utilities.navigation.Screen
-import com.example.repairtool.volunteer.RepairListScreen
-
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +28,7 @@ class MainActivity : ComponentActivity() {
             RepairToolComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    LoginNavigation() //Creates navigation from login to repairlist
+                    LoginToRepairList() //Creates and returns navigation from login to repairlist
                 }
             }
         }
@@ -69,30 +62,39 @@ private fun LoginScreen(navController: NavController) {
         val uName = getUsername()
         val pWord = getPassword()
 
-        //TODO uName && pWord checks out, then continue
+        //TODO if uName && pWord checks out, then continue
 
         Spacer(modifier = Modifier.padding(top = 30.dp))
 
         //Login button AND forgot password button
-        Row(//TODO add some design here
-
-        ) {
-            //LOGIN
-            Button(onClick = {
-                navController.navigate(Screen.RepairListScreen.withArgs(uName))
-            },
-                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+        val scaffoldState = rememberScaffoldState()
+        val snackbarCoroutineScope = rememberCoroutineScope()
+        Scaffold(scaffoldState = scaffoldState) {
+            Row(modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
             ) {
-                Text(text = "Login")
-            }
+                //LOGIN
+                Button(onClick = {
+                    if (uName != "" && pWord != "")
+                        navController.navigate(Screen.RepairListScreen.withArgs(uName))
+                    else
+                        snackbarCoroutineScope.launch {
+                            scaffoldState.snackbarHostState.showSnackbar("No username or password")
+                        }
+                },
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+                ) {
+                    Text(text = "Login")
+                }
 
-            Spacer(modifier = Modifier.padding(2.dp))
+                Spacer(modifier = Modifier.padding(2.dp))
 
-            //FORGOT PASSWORD
-            Button(onClick = { /*TODO*/ },
-            colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
-            ) {
-                Text(text = "Forgot password")
+                //FORGOT PASSWORD
+                Button(onClick = { /*TODO*/ },
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
+                ) {
+                    Text(text = "Forgot password")
+                }
             }
         }
     }

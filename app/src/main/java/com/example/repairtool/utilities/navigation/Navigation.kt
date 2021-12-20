@@ -9,9 +9,9 @@ import androidx.navigation.navArgument
 import com.example.repairtool.LoginNav
 import com.example.repairtool.volunteer.RepairListScreen
 
-//This function creates the navigation from loginscreen to the repairlist (Seen by volunteers)
+//These functions creating the navigation from loginscreen to the repairlist (Seen by volunteers(for now))
 @Composable
-fun LoginNavigation() {
+fun LoginToRepairList() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.LoginScreen.route) {
         composable(route = Screen.LoginScreen.route) {
