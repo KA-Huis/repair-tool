@@ -1,6 +1,7 @@
 package com.example.repairtool.login
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
@@ -15,7 +16,7 @@ fun getUsername(): String {
     TextField(
         value = text,
         onValueChange = { text = it},
-        label = { Text("Username") },
+        label = { Text("Username", color = MaterialTheme.colors.secondary) },
         colors = TextFieldDefaults.textFieldColors(
         backgroundColor = Color.Transparent
         ),

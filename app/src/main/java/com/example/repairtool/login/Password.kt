@@ -1,6 +1,7 @@
 package com.example.repairtool.login
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
@@ -17,7 +18,7 @@ fun getPassword() : String {
     TextField(
         value = text,
         onValueChange = { text = it},
-        label = { Text("Password") },
+        label = { Text("Password", color = MaterialTheme.colors.secondary) },
         visualTransformation = PasswordVisualTransformation(),
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent

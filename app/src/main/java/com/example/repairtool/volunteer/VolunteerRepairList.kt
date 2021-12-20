@@ -1,8 +1,8 @@
 package com.example.repairtool.volunteer
 
-import android.print.PrintAttributes
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -18,14 +18,18 @@ import com.example.repairtool.ui.theme.RepairToolComposeTheme
 
 @Composable
 fun RepairListScreen(name: String?) {
-    Header(name)
-    GetRepairsList(RepairList.repairList)
+    Header(name) //Header is around 90.dp in height
+    GetRepairsList(RepairList.repairList) //Creates lazyColumn
 
 }
 
 @Composable
 private fun GetRepairsList(repairs: List<Repair>) {
-    LazyColumn (modifier = Modifier.padding(top = 80.dp)){
+    LazyColumn (modifier = Modifier
+        .padding(top = 80.dp)
+        .fillMaxWidth()
+        .fillMaxHeight()
+    ){
         items(repairs) { repair ->
             RepairList(repair)
         }
@@ -35,7 +39,8 @@ private fun GetRepairsList(repairs: List<Repair>) {
 @Composable
 private fun RepairList(repair: Repair) {
     Row(
-        modifier = Modifier.padding(start = 16.dp)
+        modifier = Modifier
+            .padding(start = 16.dp)
     ) {
         Text(text = repair.name)
         Text(text = repair.location)

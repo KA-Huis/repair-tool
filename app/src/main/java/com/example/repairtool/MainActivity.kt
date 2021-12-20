@@ -51,7 +51,7 @@ private fun LoginScreen(navController: NavController) {
     ) {
         //Login view for app
         Spacer(modifier = Modifier.padding(20.dp))
-        Image(painter = painterResource(R.drawable.login_icon),
+        Image(painter = painterResource(R.drawable.ic_login_icon),
             contentDescription = "Login Icon",
             modifier = Modifier
                 .size(200.dp)
@@ -82,9 +82,9 @@ private fun LoginScreen(navController: NavController) {
                             scaffoldState.snackbarHostState.showSnackbar("No username or password")
                         }
                 },
-                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary,)
                 ) {
-                    Text(text = "Login")
+                    Text(text = "Login", color = MaterialTheme.colors.secondary)
                 }
 
                 Spacer(modifier = Modifier.padding(2.dp))
@@ -93,7 +93,7 @@ private fun LoginScreen(navController: NavController) {
                 Button(onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
                 ) {
-                    Text(text = "Forgot password")
+                    Text(text = "Forgot password", color = MaterialTheme.colors.secondary)
                 }
             }
         }
