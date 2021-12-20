@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.repairtool.ui.theme.RepairToolComposeTheme
 import androidx.compose.ui.unit.dp
@@ -22,6 +23,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.repairtool.login.getPassword
 import com.example.repairtool.login.getUsername
+import com.example.repairtool.utilities.navigation.LoginNavigation
 import com.example.repairtool.utilities.navigation.Screen
 import com.example.repairtool.volunteer.RepairListScreen
 
@@ -33,35 +35,16 @@ class MainActivity : ComponentActivity() {
             RepairToolComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Navigation() //Creates navigation from login to repairlist
+                    LoginNavigation() //Creates navigation from login to repairlist
                 }
             }
         }
     }
 }
 
-//This function creates the navigation from loginscreen to the repairlist (Seen by volunteers)
 @Composable
-fun Navigation() {
-    val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screen.LoginScreen.route) {
-        composable(route = Screen.LoginScreen.route) {
-            LoginScreen(navController)
-        }
-        composable(
-            route = Screen.RepairListScreen.route + "/{name}",
-            arguments = listOf(
-                navArgument("name") {
-                    type = NavType.StringType
-                    defaultValue = ""
-                    nullable = true
-                }
-            )
-        ) {
-                entry ->
-            RepairListScreen(name = entry.arguments?.getString("name"))
-        }
-    }
+fun LoginNav(navController: NavController) {
+    LoginScreen(navController)
 }
 
 //Main function to show loginpage
