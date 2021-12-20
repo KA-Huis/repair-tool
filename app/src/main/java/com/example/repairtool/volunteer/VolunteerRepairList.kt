@@ -12,32 +12,33 @@ import com.example.repairtool.ui.theme.RepairToolComposeTheme
 
 @Composable
 fun RepairListScreen(name: String?) {
-    GetRepairsList(RepairList.repairList)
+    GetRepairsList(RepairList.repairList, name)
 }
 
 @Composable
-private fun GetRepairsList(repairs: List<Repair>) {
+private fun GetRepairsList(repairs: List<Repair>, name: String?) {
     LazyColumn {
         items(repairs) { repair ->
-            ShowRepairList(repair)
+            ShowRepairList(repair, name)
         }
     }
 }
 
-
 @Composable
-private fun ShowRepairList(repair: Repair) {
+private fun ShowRepairList(repair: Repair, name: String?) {
     Row() {
+        Text(text = "Hello $name, ")
         Text(text = repair.name)
         Text(text = repair.location)
         Text(text = repair.status)
     }
 }
 
+//Preview for Android Studio
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     RepairToolComposeTheme() {
-        GetRepairsList(RepairList.repairList)
+        GetRepairsList(RepairList.repairList, "hi ")
     }
 }

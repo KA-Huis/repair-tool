@@ -11,7 +11,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.repairtool.ui.theme.RepairToolComposeTheme
 import androidx.compose.ui.unit.dp
@@ -21,6 +20,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.repairtool.login.getPassword
+import com.example.repairtool.login.getUsername
 import com.example.repairtool.utilities.navigation.Screen
 import com.example.repairtool.volunteer.RepairListScreen
 
@@ -32,36 +33,38 @@ class MainActivity : ComponentActivity() {
             RepairToolComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Navigation()
+                    Navigation() //Creates navigation from login to repairlist
                 }
             }
         }
     }
 }
 
+//This function creates the navigation from loginscreen to the repairlist (Seen by volunteers)
 @Composable
-private fun Navigation() {
+fun Navigation() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.LoginScreen.route) {
         composable(route = Screen.LoginScreen.route) {
-            LoginScreen(navController = navController)
+            LoginScreen(navController)
         }
         composable(
-            route = Screen.RepairListScreen.route,
+            route = Screen.RepairListScreen.route + "/{name}",
             arguments = listOf(
                 navArgument("name") {
                     type = NavType.StringType
-                    defaultValue = "Mitch"
+                    defaultValue = ""
                     nullable = true
                 }
             )
         ) {
-            entry ->
+                entry ->
             RepairListScreen(name = entry.arguments?.getString("name"))
         }
     }
 }
 
+//Main function to show loginpage
 @Composable
 private fun LoginScreen(navController: NavController) {
     Column(
@@ -79,9 +82,11 @@ private fun LoginScreen(navController: NavController) {
                 .padding(16.dp)
         )
 
-        //Get username AND password
-        GetUsername()
-        GetPassword()
+        //Get username AND password from loginPackage
+        val uName = getUsername()
+        val pWord = getPassword()
+
+        //TODO uName && pWord checks out, then continue
 
         Spacer(modifier = Modifier.padding(top = 30.dp))
 
@@ -91,7 +96,7 @@ private fun LoginScreen(navController: NavController) {
         ) {
             //LOGIN
             Button(onClick = {
-                navController.navigate(Screen.RepairListScreen.route)
+                navController.navigate(Screen.RepairListScreen.withArgs(uName))
             },
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
             ) {
@@ -108,37 +113,6 @@ private fun LoginScreen(navController: NavController) {
             }
         }
     }
-}
-
-@Composable
-private fun GetUsername() {
-    var text by remember { mutableStateOf("")}
-
-    TextField(
-        value = text,
-        onValueChange = { text = it},
-        label = { Text("Username")},
-        colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = androidx.compose.ui.graphics.Color.Transparent
-        ),
-        modifier = Modifier.padding(2.dp)
-    )
-}
-
-@Composable
-private fun GetPassword() {
-    var text by remember { mutableStateOf("")}
-
-    TextField(
-        value = text,
-        onValueChange = { text = it},
-        label = { Text("Password") },
-        visualTransformation = PasswordVisualTransformation(),
-        colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = androidx.compose.ui.graphics.Color.Transparent
-        ),
-        modifier = Modifier.padding(2.dp)
-    )
 }
 
 @Preview(
