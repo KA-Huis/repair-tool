@@ -75,7 +75,7 @@ private fun LoginScreen(navController: NavController) {
             ) {
                 //LOGIN
                 Button(onClick = {
-                    if (uName != "" && pWord != "")
+                    if (uName != "" || pWord != "")
                         navController.navigate(Screen.RepairListScreen.withArgs(uName))
                     else
                         snackbarCoroutineScope.launch {
