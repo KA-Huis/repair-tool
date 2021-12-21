@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="CorporateRed">#FFff5757</color>
     <color name="CorporateGrey">#FFcecece</color>
+    <color name="CorporateRedDark">#FFD62F2F</color>
+    <color name="CorporateGreyDark">#FF6E6E6E</color>
 </resources>

@@ -6,10 +6,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.repairtool.ui.theme.RepairToolComposeTheme
@@ -51,11 +53,12 @@ private fun LoginScreen(navController: NavController) {
     ) {
         //Login view for app
         Spacer(modifier = Modifier.padding(20.dp))
-        Image(painter = painterResource(R.drawable.ic_login_icon),
-            contentDescription = "Login Icon",
+        Image(painter = painterResource(R.drawable.logo),
+            contentDescription = "Logo",
             modifier = Modifier
                 .size(200.dp)
                 .padding(16.dp)
+                .clip(shape = CircleShape)
         )
 
         //Get username AND password from loginPackage

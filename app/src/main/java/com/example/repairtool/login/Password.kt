@@ -21,9 +21,11 @@ fun getPassword() : String {
         label = { Text("Password", color = MaterialTheme.colors.secondary) },
         visualTransformation = PasswordVisualTransformation(),
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = Color.Transparent
+            backgroundColor = Color.Transparent,
+            textColor = MaterialTheme.colors.secondary
         ),
-        modifier = Modifier.padding(2.dp)
+        modifier = Modifier
+            .padding(2.dp)
     )
     return text
 }

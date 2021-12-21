@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -42,9 +43,9 @@ private fun RepairList(repair: Repair) {
         modifier = Modifier
             .padding(start = 16.dp)
     ) {
-        Text(text = repair.name)
-        Text(text = repair.location)
-        Text(text = repair.status)
+        Text(text = repair.name, color = MaterialTheme.colors.secondary)
+        Text(text = repair.location, color = MaterialTheme.colors.secondary)
+        Text(text = repair.status, color = MaterialTheme.colors.secondary)
     }
 }
 
