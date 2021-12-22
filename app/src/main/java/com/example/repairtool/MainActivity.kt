@@ -4,7 +4,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.repairtool.ui.theme.RepairToolComposeTheme
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.repairtool.login.getPassword
 import com.example.repairtool.login.getUsername
 import com.example.repairtool.utilities.navigation.LoginToRepairList
@@ -46,10 +47,10 @@ fun LoginNav(navController: NavController) {
 @Composable
 private fun LoginScreen(navController: NavController) {
     Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
     ) {
         //Login view for app
         Spacer(modifier = Modifier.padding(20.dp))
@@ -87,7 +88,7 @@ private fun LoginScreen(navController: NavController) {
                 },
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary,)
                 ) {
-                    Text(text = "Login", color = MaterialTheme.colors.secondary)
+                    Text(text = "Inloggen", color = MaterialTheme.colors.secondary)
                 }
 
                 Spacer(modifier = Modifier.padding(2.dp))
@@ -96,7 +97,7 @@ private fun LoginScreen(navController: NavController) {
                 Button(onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
                 ) {
-                    Text(text = "Forgot password", color = MaterialTheme.colors.secondary)
+                    Text(text = "Wachtwoord vergeten", color = MaterialTheme.colors.secondary)
                 }
             }
         }
@@ -115,6 +116,7 @@ private fun LoginScreen(navController: NavController) {
 @Composable
 private fun DefaultPreview() {
     RepairToolComposeTheme {
-//        LoginScreen()
+        val navController = rememberNavController()
+        LoginScreen(navController)
     }
 }

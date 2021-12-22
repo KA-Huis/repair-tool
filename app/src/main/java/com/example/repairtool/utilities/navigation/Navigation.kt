@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.repairtool.LoginNav
-import com.example.repairtool.volunteer.RepairListScreen
+import com.example.repairtool.volunteer.Header
 
 //These functions creating the navigation from loginscreen to the repairlist (Seen by volunteers(for now))
 @Composable
@@ -28,7 +28,7 @@ fun LoginToRepairList() {
             )
         ) {
                 entry ->
-            RepairListScreen(name = entry.arguments?.getString("name"))
+            Header(name = entry.arguments?.getString("name"))
         }
     }
 }

@@ -18,7 +18,7 @@ fun getPassword() : String {
     TextField(
         value = text,
         onValueChange = { text = it},
-        label = { Text("Password", color = MaterialTheme.colors.secondary) },
+        label = { Text("Wachtwoord", color = MaterialTheme.colors.secondary) },
         visualTransformation = PasswordVisualTransformation(),
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,

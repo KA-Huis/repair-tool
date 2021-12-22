@@ -16,7 +16,7 @@ fun getUsername(): String {
     TextField(
         value = text,
         onValueChange = { text = it},
-        label = { Text("Username", color = MaterialTheme.colors.secondary) },
+        label = { Text("Gebruikersnaam", color = MaterialTheme.colors.secondary) },
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
             textColor = MaterialTheme.colors.secondary
