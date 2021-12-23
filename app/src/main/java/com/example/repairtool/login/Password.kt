@@ -14,7 +14,6 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun getPassword() : String {
     var text by remember { mutableStateOf("") }
-
     TextField(
         value = text,
         onValueChange = { text = it},

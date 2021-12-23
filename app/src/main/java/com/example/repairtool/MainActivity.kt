@@ -14,15 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.repairtool.ui.theme.RepairToolComposeTheme
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.repairtool.login.getPassword
 import com.example.repairtool.login.getUsername
+import com.example.repairtool.ui.theme.RepairToolComposeTheme
 import com.example.repairtool.utilities.navigation.LoginToRepairList
 import com.example.repairtool.utilities.navigation.Screen
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,12 +39,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LoginNav(navController: NavController) {
-    LoginScreen(navController)
+    LoginView(navController)
 }
 
 //Main function to show loginpage
 @Composable
-private fun LoginScreen(navController: NavController) {
+private fun LoginView(navController: NavController) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -54,7 +53,8 @@ private fun LoginScreen(navController: NavController) {
     ) {
         //Login view for app
         Spacer(modifier = Modifier.padding(20.dp))
-        Image(painter = painterResource(R.drawable.logo),
+        Image(
+            painter = painterResource(R.drawable.logo),
             contentDescription = "Logo",
             modifier = Modifier
                 .size(200.dp)
@@ -71,45 +71,43 @@ private fun LoginScreen(navController: NavController) {
         Spacer(modifier = Modifier.padding(top = 30.dp))
 
         //Login button AND forgot password button
-        val scaffoldState = rememberScaffoldState()
-        val snackbarCoroutineScope = rememberCoroutineScope()
-        Scaffold(scaffoldState = scaffoldState) {
-            Row(modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                //LOGIN
-                Button(onClick = {
-                    if (uName != "" || pWord != "")
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            //LOGIN
+            Button(
+                onClick = {
+                    if (uName != "")
                         navController.navigate(Screen.RepairListScreen.withArgs(uName))
-                    else
-                        snackbarCoroutineScope.launch {
-                            scaffoldState.snackbarHostState.showSnackbar("No username or password")
-                        }
                 },
-                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary,)
-                ) {
-                    Text(text = "Inloggen", color = MaterialTheme.colors.secondary)
-                }
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+            ) {
+                Text(text = "Inloggen", color = MaterialTheme.colors.secondary)
+            }
 
-                Spacer(modifier = Modifier.padding(2.dp))
+            Spacer(modifier = Modifier.padding(2.dp))
 
-                //FORGOT PASSWORD
-                Button(onClick = { /*TODO*/ },
-                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
-                ) {
-                    Text(text = "Wachtwoord vergeten", color = MaterialTheme.colors.secondary)
-                }
+            //FORGOT PASSWORD
+            Button(
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
+            ) {
+                Text(text = "Wachtwoord vergeten", color = MaterialTheme.colors.secondary)
             }
         }
     }
 }
 
+
 @Preview(
+    showSystemUi = true,
     showBackground = true,
     name = "LightMode"
 )
 @Preview(
     showBackground = true,
+    showSystemUi = true,
     uiMode = Configuration.UI_MODE_NIGHT_YES,
     name = "DarkMode"
 )
@@ -117,6 +115,6 @@ private fun LoginScreen(navController: NavController) {
 private fun DefaultPreview() {
     RepairToolComposeTheme {
         val navController = rememberNavController()
-        LoginScreen(navController)
+        LoginView(navController)
     }
 }
