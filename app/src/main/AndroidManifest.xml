@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.repairtool">
+    package="com.example.repairtool" >
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/launcher_icon"
+        android:fullBackupOnly="true"
+        android:icon="@drawable/ic_app_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/launcher_icon"
+        android:roundIcon="@drawable/ic_app_icon"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RepairTool">
-        <activity
-            android:name=".volunteer.RegisterRepair"
-            android:screenOrientation="portrait"
-            android:exported="true" />
-        <activity
-            android:name=".volunteer.VolunteerMain"
-            android:screenOrientation="portrait"
-            android:exported="true" />
+        android:theme="@style/Theme.RepairTool" >
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.RepairTool.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
