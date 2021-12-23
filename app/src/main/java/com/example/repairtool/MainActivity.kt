@@ -80,12 +80,12 @@ private fun LoginView(navController: NavController) {
             //LOGIN
             Button(
                 onClick = {
-                    if (uName == "Vrijwilliger" && pWord == "welkom") //TODO this is hardcoded
+                    if (uName != "" && pWord == "") //TODO this is hardcoded
                         navController.navigate(Screen.RepairListScreen.withArgs(uName))
-                    else if (uName != "Vrijwilliger" && pWord == "welkom")
-                        text = "Gebruikersnaam onjuist"
-                    else if (uName == "Vrijwilliger" && pWord != "welkom")
-                        text = "Wachtwoord onjuist"
+//                    else if (uName != "Vrijwilliger" && pWord == "welkom")
+//                        text = "Gebruikersnaam onjuist"
+//                    else if (uName == "Vrijwilliger" && pWord != "welkom")
+//                        text = "Wachtwoord onjuist"
                     else
                         text = "Voer gebruikersnaam & wachtwoord in."
                 },
@@ -99,7 +99,7 @@ private fun LoginView(navController: NavController) {
             //FORGOT PASSWORD
             Button(
                 onClick = {
-                          text = "Deze functie is nog niet functioneel."
+                          text = "Deze functie werkt nog niet."
                 },
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
             ) {
