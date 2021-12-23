@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 fun getUsername(): String {
     var text by remember { mutableStateOf("") }
     TextField(
+        maxLines = 1,
         value = text,
         onValueChange = { text = it},
         label = { Text("Gebruikersnaam", color = MaterialTheme.colors.secondary) },

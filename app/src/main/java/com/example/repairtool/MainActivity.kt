@@ -12,7 +12,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -45,6 +47,8 @@ fun LoginNav(navController: NavController) {
 //Main function to show loginpage
 @Composable
 private fun LoginView(navController: NavController) {
+    var text by remember { mutableStateOf("")}
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -66,8 +70,6 @@ private fun LoginView(navController: NavController) {
         val uName = getUsername()
         val pWord = getPassword()
 
-        //TODO if uName && pWord checks out, then continue
-
         Spacer(modifier = Modifier.padding(top = 30.dp))
 
         //Login button AND forgot password button
@@ -78,8 +80,14 @@ private fun LoginView(navController: NavController) {
             //LOGIN
             Button(
                 onClick = {
-                    if (uName != "")
+                    if (uName == "Vrijwilliger" && pWord == "welkom") //TODO this is hardcoded
                         navController.navigate(Screen.RepairListScreen.withArgs(uName))
+                    else if (uName != "Vrijwilliger" && pWord == "welkom")
+                        text = "Gebruikersnaam onjuist"
+                    else if (uName == "Vrijwilliger" && pWord != "welkom")
+                        text = "Wachtwoord onjuist"
+                    else
+                        text = "Voer gebruikersnaam & wachtwoord in."
                 },
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
             ) {
@@ -90,12 +98,19 @@ private fun LoginView(navController: NavController) {
 
             //FORGOT PASSWORD
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                          text = "Deze functie is nog niet functioneel."
+                },
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
             ) {
                 Text(text = "Wachtwoord vergeten", color = MaterialTheme.colors.secondary)
             }
         }
+        Spacer(modifier = Modifier.padding(2.dp))
+        Text(text = text,
+            color = MaterialTheme.colors.secondary,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
 

@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 fun getPassword() : String {
     var text by remember { mutableStateOf("") }
     TextField(
+        maxLines = 1,
         value = text,
         onValueChange = { text = it},
         label = { Text("Wachtwoord", color = MaterialTheme.colors.secondary) },
