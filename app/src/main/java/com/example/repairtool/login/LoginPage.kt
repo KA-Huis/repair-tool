@@ -1,5 +1,7 @@
 package com.example.repairtool.login
 
+import android.app.Activity
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,16 +16,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.core.content.ContextCompat.startActivity
 import com.example.repairtool.R
-import com.example.repairtool.utilities.navigation.Screen
+import com.example.repairtool.volunteer.RepairActivity
 
 //Main function to show loginpage
 @Composable
-fun LoginView(navController: NavController) {
+fun LoginView() {
     var text by remember { mutableStateOf("") }
     val count = remember { mutableStateOf(0) }
 
@@ -66,10 +69,16 @@ fun LoginView(navController: NavController) {
             horizontalArrangement = Arrangement.Center
         ) {
             //LOGIN
+            val context = LocalContext.current
+            val activity = (LocalContext.current as? Activity)
             Button(
                 onClick = {
-                    if (uName != "" && pWord == "") //TODO this is hardcoded
-                        navController.navigate(Screen.RepairListScreen.withArgs(uName))
+                    if (uName != "" && pWord == "") { //TODO this is hardcoded
+                        val intent = Intent(context, RepairActivity::class.java)
+                        intent.putExtra("uName",uName)
+                        context.startActivity(intent)
+                        activity?.finish()
+                    }
 //                    else if (uName != "Vrijwilliger" && pWord == "welkom")
 //                        text = "Gebruikersnaam onjuist"
 //                    else if (uName == "Vrijwilliger" && pWord != "welkom")
