@@ -26,8 +26,7 @@ fun LoginToRepairList() {
                     nullable = true
                 }
             )
-        ) {
-                entry ->
+        ) { entry ->
             RepairView(name = entry.arguments?.getString("name"))
         }
     }

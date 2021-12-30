@@ -69,7 +69,6 @@ private fun GetRepairsList(repairs: List<Repair>) {
 @Composable
 private fun RepairList(repair: Repair) {
     var isExpanded by remember { mutableStateOf(false) }
-
     Row(
         modifier = Modifier
             .padding(start = 16.dp, bottom = 8.dp)

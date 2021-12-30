@@ -47,7 +47,9 @@ fun LoginNav(navController: NavController) {
 //Main function to show loginpage
 @Composable
 private fun LoginView(navController: NavController) {
+    //This is a text underneath the buttons with extra info if needed
     var text by remember { mutableStateOf("")}
+    val count = remember { mutableStateOf(0) }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -64,7 +66,18 @@ private fun LoginView(navController: NavController) {
                 .size(200.dp)
                 .padding(16.dp)
                 .clip(shape = CircleShape)
+                .clickable {
+                    count.value++
+                }
         )
+
+        if (count.value == 5)
+            text = "Oelala, you touched me"
+        else if (count.value == 6) {
+            text = ""
+            count.value = 0
+        }
+
 
         //Get username AND password from loginPackage
         val uName = getUsername()
