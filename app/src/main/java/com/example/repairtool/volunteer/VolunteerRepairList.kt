@@ -1,19 +1,14 @@
 package com.example.repairtool.volunteer
 
-import android.graphics.drawable.PaintDrawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.repairtool.R
@@ -42,6 +37,14 @@ fun RepairView(name: String?) {
                     )
                 },
                 backgroundColor = MaterialTheme.colors.primary
+            )
+        },
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                backgroundColor = MaterialTheme.colors.primary,
+                text = {  Text(text = "Reparatie aanmelden",
+                    color = MaterialTheme.colors.secondary) },
+                onClick = {}
             )
         }
     ) {
@@ -101,7 +104,7 @@ private fun RepairList(repair: Repair) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    RepairToolComposeTheme() {
+    RepairToolComposeTheme {
         RepairView(name = "Mitch")
     }
 }
