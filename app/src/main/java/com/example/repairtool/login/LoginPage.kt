@@ -1,0 +1,103 @@
+package com.example.repairtool.login
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.repairtool.R
+import com.example.repairtool.utilities.navigation.Screen
+
+//Main function to show loginpage
+@Composable
+fun LoginView(navController: NavController) {
+    var text by remember { mutableStateOf("") }
+    val count = remember { mutableStateOf(0) }
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
+        //Login view for app
+        Spacer(modifier = Modifier.padding(20.dp))
+        Image(
+            painter = painterResource(R.drawable.logo),
+            contentDescription = "Logo",
+            modifier = Modifier
+                .size(200.dp)
+                .padding(16.dp)
+                .clip(shape = CircleShape)
+                .clickable {
+                    count.value++
+                }
+        )
+
+        if (count.value == 5)
+            text = "Oelala, you touched me"
+        else if (count.value > 5) {
+            text = ""
+            count.value = 0
+        }
+
+        //Get username AND password from loginPackage
+        val uName = getUsername()
+        val pWord = getPassword()
+
+        Spacer(modifier = Modifier.padding(top = 30.dp))
+
+        //Login button AND forgot password button
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            //LOGIN
+            Button(
+                onClick = {
+                    if (uName != "" && pWord == "") //TODO this is hardcoded
+                        navController.navigate(Screen.RepairListScreen.withArgs(uName))
+//                    else if (uName != "Vrijwilliger" && pWord == "welkom")
+//                        text = "Gebruikersnaam onjuist"
+//                    else if (uName == "Vrijwilliger" && pWord != "welkom")
+//                        text = "Wachtwoord onjuist"
+                    else
+                        text = "Voer gebruikersnaam & wachtwoord in."
+                },
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+            ) {
+                Text(text = "Inloggen", color = MaterialTheme.colors.secondary)
+            }
+
+            Spacer(modifier = Modifier.padding(2.dp))
+
+            //FORGOT PASSWORD
+            Button(
+                onClick = {
+                    text = "Deze functie werkt nog niet."
+                },
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
+            ) {
+                Text(text = "Wachtwoord vergeten", color = MaterialTheme.colors.secondary)
+            }
+        }
+        Spacer(modifier = Modifier.padding(2.dp))
+        Text(text = text,
+            color = MaterialTheme.colors.secondary,
+            fontWeight = FontWeight.Bold
+        )
+    }
+}
