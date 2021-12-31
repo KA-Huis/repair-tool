@@ -83,7 +83,7 @@ private fun RepairList(repair: Repair) {
                 }
                 Text(text = "Naam reparatie: " + repair.name + "\n\n"
                         + "Prioriteit: " + repair.priority + "\n\n"
-                        + "Omschrijving: " + repair.description + "\n\n"
+                        + "Omschrijving:\n" + repair.description + "\n\n"
                         + "Status: " + repair.status,
                     color = MaterialTheme.colors.secondary,
                     maxLines = if(isExpanded) Int.MAX_VALUE else 1,
