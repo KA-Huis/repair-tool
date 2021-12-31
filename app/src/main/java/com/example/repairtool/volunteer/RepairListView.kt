@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.repairtool.R
 import com.example.repairtool.repairs.Repair
 import com.example.repairtool.repairs.RepairList
@@ -49,7 +50,8 @@ private fun RepairList(repair: Repair) {
     RepairToolTheme {
         var isExpanded by remember { mutableStateOf(false) }
         val surfaceColor: Color by animateColorAsState(
-            if (isExpanded) MaterialTheme.colors.primary else MaterialTheme.colors.primaryVariant,
+            if (isExpanded) MaterialTheme.colors.primary
+            else MaterialTheme.colors.primary.copy(alpha = 0.2F),
         )
         Surface (
             color = surfaceColor,
@@ -86,6 +88,7 @@ private fun RepairList(repair: Repair) {
                         + "Prioriteit: " + repair.priority + "\n\n"
                         + "Omschrijving:\n" + repair.description + "\n\n"
                         + "Status: " + repair.status,
+                    fontSize = 18.sp,
                     color = MaterialTheme.colors.secondary,
                     maxLines = if(isExpanded) Int.MAX_VALUE else 1,
                     modifier = Modifier.padding(bottom = 16.dp)
