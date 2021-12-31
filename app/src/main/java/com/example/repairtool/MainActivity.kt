@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.repairtool.login.LoginView
 import com.example.repairtool.ui.theme.RepairToolTheme
 
@@ -20,13 +18,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
-
-@Preview
-@Composable
-private fun DefaultPreview() {
-    RepairToolTheme {
-        LoginView()
     }
 }
