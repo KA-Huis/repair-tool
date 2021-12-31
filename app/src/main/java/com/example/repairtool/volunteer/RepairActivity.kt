@@ -1,19 +1,19 @@
 package com.example.repairtool.volunteer
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -32,7 +32,28 @@ class RepairActivity : ComponentActivity() {
 
             RepairToolTheme {
                 Scaffold(
-                    bottomBar = {
+                    topBar = { //TopBar creates welcome message and logout option
+                        TopAppBar(
+                            title = { Text(
+                                text = "Welkom $uName",
+                                color = MaterialTheme.colors.secondary) },
+                            actions = {
+                                val activity = (LocalContext.current as? Activity)
+                                Text(
+                                    text = "Afmelden",
+                                    color = MaterialTheme.colors.secondary,
+                                    modifier = Modifier
+                                        .padding(16.dp)
+                                        .clickable(onClick = {
+                                            activity?.finish()
+                                        })
+                                )
+                            },
+                            backgroundColor = MaterialTheme.colors.primary
+                        )
+                    },
+
+                    bottomBar = { //BottomBar creates navigation
                         BottomNavigation(
                             backgroundColor = MaterialTheme.colors.primary
                         ) {
@@ -64,8 +85,8 @@ class RepairActivity : ComponentActivity() {
                             navController = navController,
                             startDestination = "repairListScreen"
                         ) {
-                            composable("repairListScreen") { RepairView(uName) }
-                            composable("addRepairScreen") { AddRepair(uName) }
+                            composable("repairListScreen") { RepairView() }
+                            composable("addRepairScreen") { AddRepair() }
                         }
                     }
                 }

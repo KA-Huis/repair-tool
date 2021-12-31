@@ -1,6 +1,5 @@
 package com.example.repairtool.volunteer
 
-import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -9,7 +8,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -17,34 +15,10 @@ import com.example.repairtool.R
 import com.example.repairtool.repairs.Repair
 import com.example.repairtool.repairs.RepairList
 import com.example.repairtool.ui.theme.RepairToolTheme
-import kotlin.system.exitProcess
 
 @Composable
-fun RepairView(name: String?) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(
-                    text = "Welkom $name",
-                    color = MaterialTheme.colors.secondary) },
-                actions = {
-                    val activity = (LocalContext.current as? Activity)
-                    Text(
-                        text = "Afmelden",
-                        color = MaterialTheme.colors.secondary,
-                        modifier = Modifier
-                            .padding(16.dp)
-                            .clickable(onClick = {
-                                activity?.finish()
-                            })
-                    )
-                },
-                backgroundColor = MaterialTheme.colors.primary
-            )
-        }
-    ) {
-        GetRepairsList(RepairList.repairList) //Creates lazyColumn
-    }
+fun RepairView() {
+    GetRepairsList(RepairList.repairList) //Creates lazyColumn
 }
 
 @Composable
@@ -63,34 +37,36 @@ private fun GetRepairsList(repairs: List<Repair>) {
 
 @Composable
 private fun RepairList(repair: Repair) {
-    var isExpanded by remember { mutableStateOf(false) }
-    Row(
-        modifier = Modifier
-            .padding(start = 16.dp, bottom = 8.dp)
-            .clickable { isExpanded = !isExpanded }
-    ) {
-        if(isExpanded) {
-            Image(painter = painterResource(R.drawable.ic_showless_icon),
-                contentDescription = "Show less arrow",
-                modifier = Modifier
-                    .size(24.dp)
-                    .padding(end = 8.dp)
+    RepairToolTheme {
+        var isExpanded by remember { mutableStateOf(false) }
+        Row(
+            modifier = Modifier
+                .padding(start = 16.dp, bottom = 8.dp)
+                .clickable { isExpanded = !isExpanded }
+        ) {
+            if(isExpanded) {
+                Image(painter = painterResource(R.drawable.ic_showless_icon),
+                    contentDescription = "Show less arrow",
+                    modifier = Modifier
+                        .size(24.dp)
+                        .padding(end = 8.dp)
+                )
+            }
+            else {
+                Image(painter = painterResource(R.drawable.ic_showmore_icon),
+                    contentDescription = "Show more arrow",
+                    modifier = Modifier
+                        .size(24.dp)
+                        .padding(end = 8.dp)
+                )
+            }
+            Text(text = "Naam reparatie: " + repair.name + "\n"
+                    + "Locatie: " + repair.location + "\n"
+                    + "Status: " + repair.status,
+                color = MaterialTheme.colors.secondary,
+                maxLines = if(isExpanded) Int.MAX_VALUE else 1
             )
         }
-        else {
-            Image(painter = painterResource(R.drawable.ic_showmore_icon),
-                contentDescription = "Show more arrow",
-                modifier = Modifier
-                    .size(24.dp)
-                    .padding(end = 8.dp)
-            )
-        }
-        Text(text = "Naam reparatie: " + repair.name + "\n"
-                + "Locatie: " + repair.location + "\n"
-                + "Status: " + repair.status,
-            color = MaterialTheme.colors.secondary,
-            maxLines = if(isExpanded) Int.MAX_VALUE else 1
-        )
     }
 }
 
@@ -99,6 +75,6 @@ private fun RepairList(repair: Repair) {
 @Composable
 fun DefaultPreview() {
     RepairToolTheme {
-        RepairView(name = "Mitch")
+        RepairView()
     }
 }

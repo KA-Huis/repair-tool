@@ -1,9 +1,5 @@
 package com.example.repairtool.utilities.navigation
 
-import android.graphics.drawable.Icon
-import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Menu
 import com.example.repairtool.R
 
 sealed class Screen(
@@ -11,8 +7,6 @@ sealed class Screen(
     val label: String,
     val icon: Int
 ) {
-    object LoginScreen : Screen("loginScreen", "Inloggen", 0)
     object RepairListScreen : Screen("repairListScreen", "Reparatie lijst", R.drawable.ic_list_icon)
     object AddRepairScreen : Screen("addRepairScreen", "Reparatie aanmelden", R.drawable.ic_repair_icon)
-
 }
