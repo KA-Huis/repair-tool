@@ -60,8 +60,9 @@ private fun RepairList(repair: Repair) {
                         .padding(end = 8.dp)
                 )
             }
-            Text(text = "Naam reparatie: " + repair.name + "\n"
-                    + "Locatie: " + repair.location + "\n"
+            Text(text = "Naam reparatie: " + repair.name + "\n\n"
+                    + "Prioriteit: " + repair.priority + "\n\n"
+                    + "Omschrijving: " + repair.description + "\n\n"
                     + "Status: " + repair.status,
                 color = MaterialTheme.colors.secondary,
                 maxLines = if(isExpanded) Int.MAX_VALUE else 1
