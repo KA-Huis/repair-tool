@@ -42,8 +42,7 @@ fun singelLinePasswordLabel(label: String) : String {
             backgroundColor = Color.Transparent,
             textColor = MaterialTheme.colors.secondary
         ),
-        modifier = Modifier
-            .padding(2.dp)
+        modifier = Modifier.padding(2.dp)
     )
     return value
 }
