@@ -1,12 +1,15 @@
 package com.example.repairtool.utilities.navigation
 
-import com.example.repairtool.R
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.List
+import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class Screen(
     val route: String,
     val label: String,
-    val icon: Int
+    val icon: ImageVector
 ) {
-    object RepairListScreen : Screen("repairListScreen", "Reparatie lijst", R.drawable.ic_list_icon)
-    object AddRepairScreen : Screen("addRepairScreen", "Reparatie aanmelden", R.drawable.ic_repair_icon)
+    object RepairListScreen : Screen("repairListScreen", "Reparatie lijst", icon = Icons.Filled.List)
+    object AddRepairScreen : Screen("addRepairScreen", "Reparatie aanmelden", icon = Icons.Filled.Build)
 }

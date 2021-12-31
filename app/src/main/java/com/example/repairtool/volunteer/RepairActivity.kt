@@ -8,10 +8,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -60,14 +62,13 @@ class RepairActivity : ComponentActivity() {
 
                             items.forEach { screen ->
                                 BottomNavigationItem(
-                                    icon = { Icon(painterResource(id = screen.icon), contentDescription = screen.route) },
-                                    label = { Text(screen.label,
-                                        color = MaterialTheme.colors.secondary) },
+                                    icon = { Icon(imageVector = screen.icon,
+                                        contentDescription = "") },
+                                    label = { Text(screen.label) },
+                                    unselectedContentColor = MaterialTheme.colors.secondary,
                                     selected = currentRoute == screen.route,
                                     onClick = {
-                                        navController.navigate(screen.route) {
-                                            launchSingleTop = true
-                                        }
+                                        navController.navigate(screen.route)
                                     }
                                 )
                             }
