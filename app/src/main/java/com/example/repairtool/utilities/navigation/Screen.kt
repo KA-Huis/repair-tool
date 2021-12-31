@@ -1,17 +1,12 @@
 package com.example.repairtool.utilities.navigation
 
-sealed class Screen(val route: String) {
-    object LoginScreen: Screen("loginScreen")
-    object RepairListScreen: Screen("repairListScreen")
+import com.example.repairtool.R
 
-    fun withArgs(vararg args: String) : String {
-        return buildString {
-            append(route)
-            args.forEach { arg ->
-                append("/$arg")
-            }
-        }
-    }
+sealed class Screen(
+    val route: String,
+    val label: String,
+    val icon: Int
+) {
+    object RepairListScreen : Screen("repairListScreen", "Reparatie lijst", R.drawable.ic_list_icon)
+    object AddRepairScreen : Screen("addRepairScreen", "Reparatie aanmelden", R.drawable.ic_repair_icon)
 }
-
-
