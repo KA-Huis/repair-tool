@@ -5,9 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -75,10 +73,11 @@ class RepairActivity : ComponentActivity() {
                             }
                         }
                     },
-                ) {
+                ) { innerPadding -> //Needed so BottomNav doesnt overlap anything
                     Column(
                         modifier = Modifier
-                            .fillMaxSize(),
+                            .fillMaxSize()
+                            .padding(innerPadding),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         NavHost(
@@ -86,7 +85,7 @@ class RepairActivity : ComponentActivity() {
                             startDestination = "repairListScreen"
                         ) {
                             composable("repairListScreen") { RepairView() }
-                            composable("addRepairScreen") { AddRepair() }
+                            composable("addRepairScreen") { AddRepair(uName) }
                         }
                     }
                 }

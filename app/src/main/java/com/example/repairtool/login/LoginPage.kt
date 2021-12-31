@@ -19,8 +19,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.repairtool.R
+import com.example.repairtool.ui.theme.RepairToolTheme
+import com.example.repairtool.utilities.textfield.singelLinePasswordLabel
+import com.example.repairtool.utilities.textfield.singleLineInputLabel
 import com.example.repairtool.volunteer.RepairActivity
 
 //Main function to show loginpage
@@ -57,8 +61,8 @@ fun LoginView() {
         }
 
         //Get username AND password from loginPackage
-        val uName = getUsername()
-        val pWord = getPassword()
+        val uName = singleLineInputLabel("Gebruikersnaam")
+        val pWord = singelLinePasswordLabel("Wachtwoord")
 
         Spacer(modifier = Modifier.padding(top = 30.dp))
 
@@ -107,5 +111,13 @@ fun LoginView() {
             color = MaterialTheme.colors.secondary,
             fontWeight = FontWeight.Bold
         )
+    }
+}
+
+@Preview
+@Composable
+private fun DefaultPreview() {
+    RepairToolTheme {
+        LoginView()
     }
 }

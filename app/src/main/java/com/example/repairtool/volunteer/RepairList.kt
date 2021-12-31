@@ -73,7 +73,7 @@ private fun RepairList(repair: Repair) {
 //Preview for Android Studio
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+private fun DefaultPreview() {
     RepairToolTheme {
         RepairView()
     }
