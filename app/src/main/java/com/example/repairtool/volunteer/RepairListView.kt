@@ -1,27 +1,21 @@
 package com.example.repairtool.volunteer
 
-import android.text.style.BackgroundColorSpan
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.repairtool.R
 import com.example.repairtool.repairs.Repair
 import com.example.repairtool.repairs.RepairList
 import com.example.repairtool.ui.theme.RepairToolTheme
@@ -83,15 +77,15 @@ private fun RepairList(repair: Repair) {
                         tint = MaterialTheme.colors.secondary
                     )
                 }
-                Text(text = "Naam reparatie: " + repair.name + "\n\n"
+                Text(text = "Naam reparatie:\n" + repair.name + "\n\n"
                         + "Gebouw: " + repair.building + "\n"
                         + "Prioriteit: " + repair.priority + "\n\n"
                         + "Omschrijving:\n" + repair.description + "\n\n"
                         + "Status: " + repair.status,
                     fontSize = 18.sp,
                     color = MaterialTheme.colors.secondary,
-                    maxLines = if(isExpanded) Int.MAX_VALUE else 1,
-                    modifier = Modifier.padding(bottom = 16.dp)
+                    maxLines = if(isExpanded) Int.MAX_VALUE else 2,
+                    modifier = Modifier.padding(bottom = 16.dp, top = 8.dp)
                 )
             }
         }

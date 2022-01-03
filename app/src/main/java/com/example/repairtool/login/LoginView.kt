@@ -78,7 +78,7 @@ fun LoginView() {
 
             Button(
                 onClick = {
-                    when (uName) {
+                    when (uName.lowercase()) {
                         "vrijwilliger" -> { //TODO this is hardcoded :)
                             val intent = Intent(context, VolunteerActivity::class.java)
                             intent.putExtra("uName",uName)
