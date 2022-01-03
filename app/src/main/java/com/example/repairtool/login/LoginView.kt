@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.repairtool.R
+import com.example.repairtool.repairman.RepairmanActivity
 import com.example.repairtool.ui.theme.RepairToolTheme
 import com.example.repairtool.utilities.textfield.singelLinePasswordLabel
 import com.example.repairtool.utilities.textfield.singleLineInputLabel
@@ -74,20 +75,24 @@ fun LoginView() {
             //LOGIN
             val context = LocalContext.current
             val activity = (LocalContext.current as? Activity)
+
             Button(
                 onClick = {
-                    if (uName != "" && pWord == "") { //TODO this is hardcoded
-                        val intent = Intent(context, VolunteerActivity::class.java)
-                        intent.putExtra("uName",uName)
-                        context.startActivity(intent)
-                        activity?.finish()
+                    when (uName) {
+                        "vrijwilliger" -> { //TODO this is hardcoded :)
+                            val intent = Intent(context, VolunteerActivity::class.java)
+                            intent.putExtra("uName",uName)
+                            context.startActivity(intent)
+                            activity?.finish()
+                        }
+                        "klusjesman" -> {
+                            val intent = Intent(context, RepairmanActivity::class.java)
+                            intent.putExtra("uName",uName)
+                            context.startActivity(intent)
+                            activity?.finish()
+                        }
+                        else -> text = "Voer gebruikersnaam & wachtwoord in."
                     }
-//                    else if (uName != "Vrijwilliger" && pWord == "welkom")
-//                        text = "Gebruikersnaam onjuist"
-//                    else if (uName == "Vrijwilliger" && pWord != "welkom")
-//                        text = "Wachtwoord onjuist"
-                    else
-                        text = "Voer gebruikersnaam & wachtwoord in."
                 },
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
             ) {
