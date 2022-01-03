@@ -55,7 +55,7 @@ fun AddRepair(uName: String?) {
                         repairDescription
                     )
 
-                    val intent = Intent(context, RepairActivity::class.java)
+                    val intent = Intent(context, VolunteerActivity::class.java)
                     intent.putExtra("uName",uName)
                     context.startActivity(intent)
                     activity?.finish()
@@ -68,7 +68,7 @@ fun AddRepair(uName: String?) {
                 Spacer(modifier = Modifier.width(20.dp))
 
                 Button(onClick = {
-                    val intent = Intent(context, RepairActivity::class.java)
+                    val intent = Intent(context, VolunteerActivity::class.java)
                     intent.putExtra("uName",uName)
                     context.startActivity(intent)
                     activity?.finish()

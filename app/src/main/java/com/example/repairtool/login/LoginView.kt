@@ -25,7 +25,7 @@ import com.example.repairtool.R
 import com.example.repairtool.ui.theme.RepairToolTheme
 import com.example.repairtool.utilities.textfield.singelLinePasswordLabel
 import com.example.repairtool.utilities.textfield.singleLineInputLabel
-import com.example.repairtool.volunteer.RepairActivity
+import com.example.repairtool.volunteer.VolunteerActivity
 
 //Main function to show loginpage
 @Composable
@@ -77,7 +77,7 @@ fun LoginView() {
             Button(
                 onClick = {
                     if (uName != "" && pWord == "") { //TODO this is hardcoded
-                        val intent = Intent(context, RepairActivity::class.java)
+                        val intent = Intent(context, VolunteerActivity::class.java)
                         intent.putExtra("uName",uName)
                         context.startActivity(intent)
                         activity?.finish()
