@@ -57,7 +57,7 @@ private fun RepairList(repair: Repair) {
                 ){
             Row(
                 modifier = Modifier
-                    .clickable { isExpanded = !isExpanded }
+                    .clickable { isExpanded = !isExpanded },
             ) {
                 if(isExpanded) {
                     Icon(imageVector = Icons.Filled.KeyboardArrowUp,

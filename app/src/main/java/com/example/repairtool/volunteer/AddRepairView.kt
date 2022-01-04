@@ -31,6 +31,7 @@ fun AddRepair(uName: String?) {
             //DropdownMenus
             val priorityName = priorityDropdown()
             val buildingName = buildingDropdown()
+            Spacer(modifier = Modifier.height(16.dp))
 
             //Get description of repair
             val repairDescription = multiLineInputTitle("Omschrijving reparatie")
@@ -88,7 +89,7 @@ private fun SaveRepair(
     building: String,
     repairDescription: String
 ) {
-    repairList.add(Repair(repairName, building ,priority, repairDescription,"Geregistreerd"))
+    repairList.add(Repair(4, repairName, building ,priority, repairDescription,"Geregistreerd"))
 }
 
 @Preview (showBackground = true)

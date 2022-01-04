@@ -11,7 +11,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.repairtool.repairs.PriorityList
+import com.example.repairtool.utilities.dropdownmenu.items.PriorityList
 
 @Composable
 fun priorityDropdown() : String {

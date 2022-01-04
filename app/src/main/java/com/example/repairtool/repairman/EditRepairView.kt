@@ -7,8 +7,11 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.repairtool.repairs.Repair
 import com.example.repairtool.repairs.RepairList.repairList
 import com.example.repairtool.ui.theme.RepairToolTheme
@@ -16,10 +19,11 @@ import com.example.repairtool.utilities.dropdownmenu.buildingDropdown
 import com.example.repairtool.utilities.textfield.multiLineInputTitle
 import com.example.repairtool.utilities.textfield.singleLineInputTitle
 import com.example.repairtool.utilities.dropdownmenu.priorityDropdown
+import com.example.repairtool.utilities.dropdownmenu.statusDropdown
 import com.example.repairtool.volunteer.VolunteerActivity
 
 @Composable
-fun EditRepair(uName: String?) {
+fun EditRepair(uName: String, id: Int) {
     RepairToolTheme {
         Column(
             modifier = Modifier
@@ -27,14 +31,31 @@ fun EditRepair(uName: String?) {
                 .padding(16.dp)
         ) {
             //Get name of repair
-            val repairName = singleLineInputTitle("Naam reparatie")
+            val repair = repairList.find { it.id == id }
+            Text(text = repair?.name + " - " + repair?.building,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colors.secondary,
+                fontSize = 18.sp
+            )
+
+            Text(text = repair?.description + "\n\n" +
+                    "Reparatie is als ${repair?.priority} aangemeld.",
+                fontStyle = FontStyle.Italic)
 
             //DropdownMenus
-            val priorityName = priorityDropdown()
-            val buildingName = buildingDropdown()
+            var priorityName = ""
+            Row {
+                Text(text = "Nieuwe ",
+                    modifier = Modifier.padding(top = 16.dp)
+                    )
+                priorityName = priorityDropdown()
+            }
 
-            //Get description of repair
-            val repairDescription = multiLineInputTitle("Omschrijving reparatie")
+            val statusName = statusDropdown()
+            Spacer(modifier = Modifier.height(16.dp))
+
+            //Get extra notes from repairman //TODO not functional
+            val repairNotes = multiLineInputTitle("Notities")
 
             Spacer(modifier = Modifier.height(30.dp))
 
@@ -49,14 +70,13 @@ fun EditRepair(uName: String?) {
                 val activity = (LocalContext.current as? Activity)
                 Button(onClick = {
                     //Push all parameters to function to save it into DB, if button == clicked
-                    SaveRepair(
-                        repairName,
+                    UpdateRepair(
+                        id,
                         priorityName,
-                        buildingName,
-                        repairDescription
+                        statusName
                     )
 
-                    val intent = Intent(context, com.example.repairtool.volunteer.VolunteerActivity::class.java)
+                    val intent = Intent(context, RepairmanActivity::class.java)
                     intent.putExtra("uName",uName)
                     context.startActivity(intent)
                     activity?.finish()
@@ -69,7 +89,7 @@ fun EditRepair(uName: String?) {
                 Spacer(modifier = Modifier.width(20.dp))
 
                 Button(onClick = {
-                    val intent = Intent(context, com.example.repairtool.volunteer.VolunteerActivity::class.java)
+                    val intent = Intent(context, RepairmanActivity::class.java)
                     intent.putExtra("uName",uName)
                     context.startActivity(intent)
                     activity?.finish()
@@ -83,19 +103,19 @@ fun EditRepair(uName: String?) {
     }
 }
 
-private fun SaveRepair(
-    repairName: String,
+private fun UpdateRepair(
+    id: Int,
     priority: String,
-    building: String,
-    repairDescription: String
+    status: String
 ) {
-    repairList.add(Repair(repairName, building ,priority, repairDescription,"Geregistreerd"))
+    repairList.find { it.id == id }?.priority = priority
+    repairList.find { it.id == id }?.status = status
 }
 
 @Preview (showBackground = true)
 @Composable
 private fun DefaultPreview() {
     RepairToolTheme {
-        EditRepair("Mitch")
+        EditRepair("Mitch", 1)
     }
 }
