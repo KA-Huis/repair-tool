@@ -1,6 +1,8 @@
 package com.example.repairtool.repairman
 
 
+import android.app.Activity
+import android.content.Intent
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
@@ -15,6 +17,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,12 +26,12 @@ import com.example.repairtool.repairs.RepairList
 import com.example.repairtool.ui.theme.RepairToolTheme
 
 @Composable
-fun RepairmanView() {
-    GetRepairsList(RepairList.repairList) //Creates lazyColumn
+fun RepairmanView(uName: String?) {
+    GetRepairsList(RepairList.repairList, uName) //Creates lazyColumn
 }
 
 @Composable
-private fun GetRepairsList(repairs: List<Repair>) {
+private fun GetRepairsList(repairs: List<Repair>, uName: String?) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,42 +39,43 @@ private fun GetRepairsList(repairs: List<Repair>) {
             .padding(top = 16.dp)
     ) {
         items(repairs) { repair ->
-            RepairList(repair)
+            RepairList(repair, uName)
         }
     }
 }
 
 @Composable
-private fun RepairList(repair: Repair) {
+private fun RepairList(repair: Repair, uName: String?) {
     RepairToolTheme {
         var isExpanded by remember { mutableStateOf(false) }
         val surfaceColor: Color by animateColorAsState(
             if (isExpanded) MaterialTheme.colors.primary
             else MaterialTheme.colors.primary.copy(alpha = 0.2F),
         )
-        Surface (
+        Surface(
             color = surfaceColor,
             modifier = Modifier
                 .animateContentSize()
                 .padding(start = 16.dp, bottom = 6.dp, end = 16.dp)
                 .fillMaxWidth(),
             shape = MaterialTheme.shapes.small
-        ){
+        ) {
             Row( //TODO add button
                 modifier = Modifier
                     .clickable { isExpanded = !isExpanded }
             ) {
-                if(isExpanded) {
-                    Icon(imageVector = Icons.Filled.KeyboardArrowUp,
+                if (isExpanded) {
+                    Icon(
+                        imageVector = Icons.Filled.KeyboardArrowUp,
                         contentDescription = "Show less arrow",
                         modifier = Modifier
                             .size(24.dp)
                             .padding(end = 8.dp),
                         tint = MaterialTheme.colors.secondary
                     )
-                }
-                else {
-                    Icon(imageVector = Icons.Filled.KeyboardArrowDown,
+                } else {
+                    Icon(
+                        imageVector = Icons.Filled.KeyboardArrowDown,
                         contentDescription = "Show more arrow",
                         modifier = Modifier
                             .size(24.dp)
@@ -80,28 +84,39 @@ private fun RepairList(repair: Repair) {
                     )
                 }
                 Column {
-                    Text(text = "Naam reparatie:\n" + repair.name + "\n\n"
-                            + "Gebouw: " + repair.building + "\n"
-                            + "Prioriteit: " + repair.priority + "\n\n"
-                            + "Omschrijving:\n" + repair.description + "\n\n"
-                            + "Status: " + repair.status,
+                    Text(
+                        text = "Naam reparatie:\n" + repair.name + "\n\n"
+                                + "Gebouw: " + repair.building + "\n"
+                                + "Prioriteit: " + repair.priority + "\n\n"
+                                + "Omschrijving:\n" + repair.description + "\n\n"
+                                + "Status: " + repair.status,
                         fontSize = 18.sp,
                         color = MaterialTheme.colors.secondary,
-                        maxLines = if(isExpanded) Int.MAX_VALUE else 2,
+                        maxLines = if (isExpanded) Int.MAX_VALUE else 2,
                         modifier = Modifier.padding(bottom = 16.dp, top = 8.dp)
                     )
-                    if(isExpanded){
-                        Column(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalAlignment = Alignment.End,
+                }
+                if (isExpanded) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.End,
+                    ) {
+                        val context = LocalContext.current
+                        val activity = (LocalContext.current as? Activity)
+                        Button(
+                            onClick = {
+                                val intent = Intent(context, EditRepair::class.java)
+                                intent.putExtra("uName", uName)
+                                intent.putExtra("id", repair.id)
+                                context.startActivity(intent)
+                                activity?.finish()
+                            },
+                            modifier = Modifier
+                                .padding(16.dp),
+                            colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
                         ) {
-                            Button(onClick = { /*TODO*/ },
-                                modifier = Modifier
-                                    .padding(16.dp),
-                                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
-                            ) {
-                                Text(text = "Wijzigen", color = MaterialTheme.colors.secondary)
-                            }
+                            Text(text = "Wijzigen", color = MaterialTheme.colors.secondary)
+
                         }
                     }
                 }
@@ -115,6 +130,6 @@ private fun RepairList(repair: Repair) {
 @Composable
 private fun DefaultPreview() {
     RepairToolTheme {
-        RepairmanView()
+        RepairmanView("Name")
     }
 }

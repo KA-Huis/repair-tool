@@ -21,6 +21,11 @@
             android:label="RepairmanActivity"
             android:theme="@style/Theme.RepairTool.NoActionBar" />
         <activity
+            android:name=".repairman.EditRepair"
+            android:exported="true"
+            android:label="EditRepair"
+            android:theme="@style/Theme.RepairTool.NoActionBar"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.RepairTool.NoActionBar">

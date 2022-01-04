@@ -2,6 +2,9 @@ package com.example.repairtool.repairman
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -12,18 +15,30 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.repairtool.repairs.Repair
 import com.example.repairtool.repairs.RepairList.repairList
 import com.example.repairtool.ui.theme.RepairToolTheme
-import com.example.repairtool.utilities.dropdownmenu.buildingDropdown
 import com.example.repairtool.utilities.textfield.multiLineInputTitle
-import com.example.repairtool.utilities.textfield.singleLineInputTitle
 import com.example.repairtool.utilities.dropdownmenu.priorityDropdown
 import com.example.repairtool.utilities.dropdownmenu.statusDropdown
-import com.example.repairtool.volunteer.VolunteerActivity
+
+class EditRepair : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            val uName = intent.getStringExtra("uName")
+            val id = intent.getIntExtra("id", 0)
+            RepairToolTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(color = MaterialTheme.colors.background) {
+                    EditRepair(uName, id)
+                }
+            }
+        }
+    }
+}
 
 @Composable
-fun EditRepair(uName: String, id: Int) {
+private fun EditRepair(uName: String?, id: Int) {
     RepairToolTheme {
         Column(
             modifier = Modifier
@@ -40,13 +55,16 @@ fun EditRepair(uName: String, id: Int) {
 
             Text(text = repair?.description + "\n\n" +
                     "Reparatie is als ${repair?.priority} aangemeld.",
-                fontStyle = FontStyle.Italic)
+                fontStyle = FontStyle.Italic,
+                color = MaterialTheme.colors.secondary
+            )
 
             //DropdownMenus
             var priorityName = ""
             Row {
                 Text(text = "Nieuwe ",
-                    modifier = Modifier.padding(top = 16.dp)
+                    modifier = Modifier.padding(top = 16.dp),
+                    color = MaterialTheme.colors.secondary
                     )
                 priorityName = priorityDropdown()
             }
@@ -70,7 +88,7 @@ fun EditRepair(uName: String, id: Int) {
                 val activity = (LocalContext.current as? Activity)
                 Button(onClick = {
                     //Push all parameters to function to save it into DB, if button == clicked
-                    UpdateRepair(
+                    updateRepair(
                         id,
                         priorityName,
                         statusName
@@ -103,7 +121,7 @@ fun EditRepair(uName: String, id: Int) {
     }
 }
 
-private fun UpdateRepair(
+private fun updateRepair(
     id: Int,
     priority: String,
     status: String

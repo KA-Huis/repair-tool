@@ -11,13 +11,13 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.repairtool.utilities.dropdownmenu.items.PriorityList
+import com.example.repairtool.utilities.dropdownmenu.items.StatusList
 
 @Composable
 fun statusDropdown() : String {
     //Dropdown
     //DropdownMenu variables
-    var statusName: String by remember { mutableStateOf(PriorityList.priorityList[0].toString()) }
+    var statusName: String by remember { mutableStateOf(StatusList.statusList[0].toString()) }
     var expanded by remember { mutableStateOf(false) }
 
     Row(
@@ -43,12 +43,12 @@ fun statusDropdown() : String {
                 expanded = false
             }
             ) {
-                PriorityList.priorityList.forEach { priority ->
+                StatusList.statusList.forEach { status ->
                     DropdownMenuItem(onClick = {
                         expanded = false
-                        statusName = priority.priority
+                        statusName = status.status
                     }) {
-                        Text(text = priority.toString())
+                        Text(text = status.toString())
                     }
                 }
             }

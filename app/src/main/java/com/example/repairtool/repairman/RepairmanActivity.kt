@@ -41,7 +41,7 @@ class RepairmanActivity : ComponentActivity() {
                         )
                     },
                 ) {
-                    RepairmanView()
+                    RepairmanView(uName)
                 }
             }
         }
