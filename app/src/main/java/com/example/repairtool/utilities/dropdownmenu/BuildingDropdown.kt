@@ -11,7 +11,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.repairtool.repairs.BuildingList
+import com.example.repairtool.utilities.dropdownmenu.items.BuildingList
 
 @Composable
 fun buildingDropdown() : String {
@@ -22,7 +22,7 @@ fun buildingDropdown() : String {
 
     Row(
         modifier = Modifier
-            .padding(top = 16.dp, bottom = 16.dp)
+            .padding(top = 16.dp)
     ) {
         Text(text = "Gebouw", color = MaterialTheme.colors.secondary)
 

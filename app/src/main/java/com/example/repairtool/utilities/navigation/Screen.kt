@@ -11,5 +11,7 @@ sealed class Screen(
     val icon: ImageVector
 ) {
     object RepairListScreen : Screen("repairListScreen", "Reparatie lijst", icon = Icons.Filled.List)
+    object RepairmanRepairListScreen : Screen("repairmanRepairListScreen", "Reparatie lijst", icon = Icons.Filled.List)
     object AddRepairScreen : Screen("addRepairScreen", "Reparatie aanmelden", icon = Icons.Filled.Build)
+    object EditRepairScreen : Screen("editRepairScreen", "Reparatie wijzigen", icon = Icons.Filled.Build)
 }

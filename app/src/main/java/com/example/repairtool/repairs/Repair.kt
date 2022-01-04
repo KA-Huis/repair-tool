@@ -1,9 +1,10 @@
 package com.example.repairtool.repairs
 
 data class Repair(
+    val id: Int,
     val name: String,
-    val building: String,
-    val priority: String,
-    val description: String,
-    val status: String
+    var building: String,
+    var priority: String,
+    var description: String,
+    var status: String
     )

@@ -11,10 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RepairTool">
         <activity
-            android:name=".volunteer.RepairActivity"
+            android:name=".volunteer.VolunteerActivity"
             android:exported="true"
             android:label="@string/title_activity_repair"
             android:theme="@style/Theme.RepairTool.NoActionBar" />
+        <activity
+            android:name=".repairman.RepairmanActivity"
+            android:exported="true"
+            android:label="RepairmanActivity"
+            android:theme="@style/Theme.RepairTool.NoActionBar" />
+        <activity
+            android:name=".repairman.EditRepair"
+            android:exported="true"
+            android:label="EditRepair"
+            android:theme="@style/Theme.RepairTool.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

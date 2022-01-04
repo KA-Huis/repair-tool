@@ -31,6 +31,7 @@ fun AddRepair(uName: String?) {
             //DropdownMenus
             val priorityName = priorityDropdown()
             val buildingName = buildingDropdown()
+            Spacer(modifier = Modifier.height(16.dp))
 
             //Get description of repair
             val repairDescription = multiLineInputTitle("Omschrijving reparatie")
@@ -55,7 +56,7 @@ fun AddRepair(uName: String?) {
                         repairDescription
                     )
 
-                    val intent = Intent(context, RepairActivity::class.java)
+                    val intent = Intent(context, VolunteerActivity::class.java)
                     intent.putExtra("uName",uName)
                     context.startActivity(intent)
                     activity?.finish()
@@ -68,7 +69,7 @@ fun AddRepair(uName: String?) {
                 Spacer(modifier = Modifier.width(20.dp))
 
                 Button(onClick = {
-                    val intent = Intent(context, RepairActivity::class.java)
+                    val intent = Intent(context, VolunteerActivity::class.java)
                     intent.putExtra("uName",uName)
                     context.startActivity(intent)
                     activity?.finish()
@@ -88,7 +89,7 @@ private fun SaveRepair(
     building: String,
     repairDescription: String
 ) {
-    repairList.add(Repair(repairName, building ,priority, repairDescription,"Geregistreerd"))
+    repairList.add(Repair(4, repairName, building ,priority, repairDescription,"Geregistreerd"))
 }
 
 @Preview (showBackground = true)
