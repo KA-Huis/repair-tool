@@ -34,8 +34,23 @@ Set up a Vritual Device using Android Studio. Klik the 'run' button to load the 
 
 
 ## Changelog
-_03 jan 2022_  
-Fully functional app is ready for PR to Acceptance. No logic added to app yet. So not production ready!
+All notable changes to this project will be documented in this file.  
+
+#### [1.0.0] - 2022-01-10  
+#### Added  
+General
+- Loginscreen/ logout button
+- Extend repair for more info
+
+Volunteer
+- Repairlistview
+- Navigation between repairlist and add repair
+- Ability to add repairs to the repairlist
+
+Repairman
+- Repiarlistview
+- Ability for repairman to change repairs
+
 
 ## License
 
