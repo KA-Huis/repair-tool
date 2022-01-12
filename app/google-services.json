@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1073431818069",
+    "project_id": "ka-huis",
+    "storage_bucket": "ka-huis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073431818069:android:ca792306d786888b2949dc",
+        "android_client_info": {
+          "package_name": "com.example.repairtool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073431818069-7t37ame59cfc5epqpnnod2o24ti515hq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBly7mFVN2Zh_5We7BNBHgZpo1SB6vpdOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073431818069-7t37ame59cfc5epqpnnod2o24ti515hq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

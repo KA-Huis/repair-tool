@@ -4,14 +4,26 @@ Repair tool built for KA-Huis.
 
 ## Overview
 
-The application is built using Kotlin.
+The application is built using Kotlin. Design is built using Jetpack Compose.
 
 ## Setup
 
+Clone or download the code from this GitHub. The stable version is the acceptance branch. As the name suggests is the development branch in development and there is a small change the code is not working properly.
+
 ### Requirements
 
+Android Studio Arctic Fox | 2020.3.1 Patch 4 (latest tested version)   
+Android smartphone with at least SKD version 21 (Android 5.0 Lollipop) or emulator with equivalent specs.
 
 ### Installation
+
+Open Android Studio and open a new project.  
+Go to 'Build > Generate Signed Bundle/APK > Build APK  
+Android Studio will download an APK to your PC, click the popup to locate the file.  
+The file is named something with 'APP_DEBUG', rename to whatever you want and sideload/install it on your phone.
+
+**Alternative**  
+Set up a Virtual Device using Android Studio. Klik the 'run' button to load the app on your virtual device.
 
 ## Credits
 
@@ -22,6 +34,22 @@ The application is built using Kotlin.
 
 
 ## Changelog
+All notable changes to this project will be documented in this file.  
+
+#### [1.0.0] - 2022-01-10  
+#### Added  
+General
+- Loginscreen/ logout button
+- Extend repair for more info
+
+Volunteer
+- Repairlistview
+- Navigation between repair list and add repair
+- Ability to add repairs to the repair list
+
+Repairman
+- Repiarlistview
+- Ability for a repairman to change repairs
 
 
 ## License
