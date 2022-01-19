@@ -1,5 +1,6 @@
 package com.example.repairtool.utilities.textfield
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -14,16 +15,20 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun singleLineInputTitle(title: String) : String {
     var value by rememberSaveable { mutableStateOf("") }
-    Text(text = title, color = MaterialTheme.colors.secondary)
+    Text(
+        text = title,
+        color = MaterialTheme.colors.secondary
+    )
     TextField(
         singleLine = true,
         value = value,
         onValueChange = { value = it},
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
-            textColor = MaterialTheme.colors.secondary
+            textColor = MaterialTheme.colors.secondary,
+            unfocusedIndicatorColor = MaterialTheme.colors.secondary
         ),
-        modifier = Modifier.padding(2.dp)
+        modifier = Modifier.fillMaxWidth()
     )
     return value
 }
@@ -31,15 +36,19 @@ fun singleLineInputTitle(title: String) : String {
 @Composable
 fun multiLineInputTitle(title: String) : String {
     var value by rememberSaveable { mutableStateOf("") }
-    Text(text = title, color = MaterialTheme.colors.secondary)
+    Text(
+        text = title,
+        color = MaterialTheme.colors.secondary,
+    )
     TextField(
         value = value,
         onValueChange = { value = it},
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
-            textColor = MaterialTheme.colors.secondary
+            textColor = MaterialTheme.colors.secondary,
+            unfocusedIndicatorColor = MaterialTheme.colors.secondary
         ),
-        modifier = Modifier.padding(2.dp)
+        modifier = Modifier.fillMaxWidth()
     )
     return value
 }

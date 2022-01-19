@@ -38,6 +38,7 @@ fun LoginView() {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
+            .padding(16.dp)
             .verticalScroll(rememberScrollState())
     ) {
         //Login view for app
@@ -63,14 +64,15 @@ fun LoginView() {
 
         //Get username AND password from loginPackage
         val uName = singleLineInputLabel("Gebruikersnaam")
+        Spacer(modifier = Modifier.padding(8.dp))
         val pWord = singelLinePasswordLabel("Wachtwoord")
 
         Spacer(modifier = Modifier.padding(top = 30.dp))
 
         //Login button AND forgot password button
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
         ) {
             //LOGIN
             val context = LocalContext.current
@@ -94,21 +96,23 @@ fun LoginView() {
                         else -> text = "Voer gebruikersnaam & wachtwoord in."
                     }
                 },
-                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "Inloggen", color = MaterialTheme.colors.secondary)
             }
 
-            Spacer(modifier = Modifier.padding(2.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             //FORGOT PASSWORD
             Button(
                 onClick = {
                     text = "Deze functie werkt nog niet."
                 },
-                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant),
+                modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Wachtwoord vergeten", color = MaterialTheme.colors.secondary)
+                Text(text = "Wachtwoord vergeten", color = MaterialTheme.colors.secondaryVariant)
             }
         }
         Spacer(modifier = Modifier.padding(2.dp))
@@ -119,7 +123,7 @@ fun LoginView() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
     RepairToolTheme {

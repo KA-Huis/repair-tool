@@ -20,12 +20,7 @@ fun priorityDropdown() : String {
     var priorityName: String by remember { mutableStateOf(PriorityList.priorityList[0].toString()) }
     var expanded by remember { mutableStateOf(false) }
 
-    Row(
-        modifier = Modifier
-            .padding(top = 16.dp)
-    ) {
-        Text(text = "Prioriteit", color = MaterialTheme.colors.secondary)
-
+    Row {
         //Actual DropDownMenus
         Row(
             modifier = Modifier
@@ -33,7 +28,7 @@ fun priorityDropdown() : String {
                     expanded = !expanded
                 }
         ) {
-            Spacer(modifier = Modifier.width(30.dp))
+            Text(text = "Prioriteit: ", color = MaterialTheme.colors.secondary)
             Text(text = priorityName, color = MaterialTheme.colors.secondary)
             Icon(imageVector = Icons.Filled.ArrowDropDown,
                 "DropdownArrow",

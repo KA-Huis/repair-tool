@@ -17,6 +17,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -96,28 +97,27 @@ private fun RepairList(repair: Repair, uName: String?) {
                         modifier = Modifier.padding(bottom = 16.dp, top = 8.dp)
                     )
                 }
-                if (isExpanded) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalAlignment = Alignment.End,
+                Box(
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    val context = LocalContext.current
+                    val activity = (LocalContext.current as? Activity)
+                    Button(
+                        onClick = {
+                            val intent = Intent(context, EditRepair::class.java)
+                            intent.putExtra("uName", uName)
+                            intent.putExtra("id", repair.id)
+                            context.startActivity(intent)
+                            activity?.finish()
+                        },
+                        modifier = Modifier
+                            .padding(16.dp)
+                            .align(Alignment.CenterEnd),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.background)
                     ) {
-                        val context = LocalContext.current
-                        val activity = (LocalContext.current as? Activity)
-                        Button(
-                            onClick = {
-                                val intent = Intent(context, EditRepair::class.java)
-                                intent.putExtra("uName", uName)
-                                intent.putExtra("id", repair.id)
-                                context.startActivity(intent)
-                                activity?.finish()
-                            },
-                            modifier = Modifier
-                                .padding(16.dp),
-                            colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
-                        ) {
-                            Text(text = "Wijzigen", color = MaterialTheme.colors.secondary)
+                        Text(text = "Wijzigen", color = MaterialTheme.colors.secondary)
 
-                        }
+
                     }
                 }
             }

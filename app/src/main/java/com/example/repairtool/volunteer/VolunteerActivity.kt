@@ -1,6 +1,7 @@
 package com.example.repairtool.volunteer
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.repairtool.MainActivity
 import com.example.repairtool.ui.theme.RepairToolTheme
 import com.example.repairtool.utilities.navigation.Screen
 
@@ -35,6 +37,7 @@ class VolunteerActivity : ComponentActivity() {
                                 text = "Welkom $uName",
                                 color = MaterialTheme.colors.secondary) },
                             actions = {
+                                val context = LocalContext.current
                                 val activity = (LocalContext.current as? Activity)
                                 Text(
                                     text = "Afmelden",
@@ -42,6 +45,8 @@ class VolunteerActivity : ComponentActivity() {
                                     modifier = Modifier
                                         .padding(16.dp)
                                         .clickable(onClick = {
+                                            val intent = Intent(context, MainActivity::class.java)
+                                            activity?.startActivity(intent)
                                             activity?.finish()
                                         })
                                 )
@@ -74,9 +79,7 @@ class VolunteerActivity : ComponentActivity() {
                 ) { innerPadding -> //Needed so BottomNav doesnt overlap anything
                     Column(
                         modifier = Modifier
-                            .fillMaxSize()
                             .padding(innerPadding),
-                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         NavHost(
                             navController = navController,
