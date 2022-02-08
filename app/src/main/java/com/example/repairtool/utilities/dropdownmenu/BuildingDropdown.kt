@@ -20,12 +20,7 @@ fun buildingDropdown() : String {
     var buildingName: String by remember { mutableStateOf(BuildingList.buildingList[0].toString()) }
     var expanded by remember { mutableStateOf(false) }
 
-    Row(
-        modifier = Modifier
-            .padding(top = 16.dp)
-    ) {
-        Text(text = "Gebouw", color = MaterialTheme.colors.secondary)
-
+    Row {
         //Actual DropDownMenus
         Row(
             modifier = Modifier
@@ -33,7 +28,7 @@ fun buildingDropdown() : String {
                     expanded = !expanded
                 }
         ) {
-            Spacer(modifier = Modifier.width(30.dp))
+            Text(text = "Gebouw: ", color = MaterialTheme.colors.secondary)
             Text(text = buildingName, color = MaterialTheme.colors.secondary)
             Icon(imageVector = Icons.Filled.ArrowDropDown,
                 "DropdownArrow",

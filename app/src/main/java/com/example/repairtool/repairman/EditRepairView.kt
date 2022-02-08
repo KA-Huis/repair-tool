@@ -61,14 +61,16 @@ private fun EditRepair(uName: String?, id: Int) {
 
             //DropdownMenus
             var priorityName = ""
-            Row {
+            Row (
+                modifier = Modifier.padding(top = 16.dp)
+                    ) {
                 Text(text = "Nieuwe ",
-                    modifier = Modifier.padding(top = 16.dp),
                     color = MaterialTheme.colors.secondary
                     )
                 priorityName = priorityDropdown()
             }
 
+            Spacer(modifier = Modifier.height(16.dp))
             val statusName = statusDropdown()
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -78,11 +80,9 @@ private fun EditRepair(uName: String?, id: Int) {
             Spacer(modifier = Modifier.height(30.dp))
 
             //Buttons
-            Row(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalArrangement = Arrangement.Center
             ) {
                 val context = LocalContext.current
                 val activity = (LocalContext.current as? Activity)
@@ -99,12 +99,13 @@ private fun EditRepair(uName: String?, id: Int) {
                     context.startActivity(intent)
                     activity?.finish()
                 },
-                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(text = "Opslaan", color = MaterialTheme.colors.secondary)
                 }
 
-                Spacer(modifier = Modifier.width(20.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 Button(onClick = {
                     val intent = Intent(context, RepairmanActivity::class.java)
@@ -112,7 +113,8 @@ private fun EditRepair(uName: String?, id: Int) {
                     context.startActivity(intent)
                     activity?.finish()
                 },
-                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant),
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(text = "Annuleren", color = MaterialTheme.colors.secondary)
                 }

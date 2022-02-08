@@ -29,8 +29,7 @@ fun RepairView() {
 private fun GetRepairsList(repairs: List<Repair>) {
     LazyColumn(
         modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
+            .fillMaxSize()
             .padding(top = 16.dp)
     ) {
         items(repairs) { repair ->

@@ -1,5 +1,6 @@
 package com.example.repairtool.utilities.textfield
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -22,9 +23,10 @@ fun singleLineInputLabel(label: String): String {
         label = { Text(label, color = MaterialTheme.colors.secondary) },
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
-            textColor = MaterialTheme.colors.secondary
+            textColor = MaterialTheme.colors.secondary,
+            unfocusedIndicatorColor = MaterialTheme.colors.secondary
         ),
-        modifier = Modifier.padding(2.dp)
+        modifier = Modifier.fillMaxWidth()
     )
     return value
 }
@@ -40,9 +42,10 @@ fun singelLinePasswordLabel(label: String) : String {
         visualTransformation = PasswordVisualTransformation(),
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
-            textColor = MaterialTheme.colors.secondary
+            textColor = MaterialTheme.colors.secondary,
+            unfocusedIndicatorColor = MaterialTheme.colors.secondary
         ),
-        modifier = Modifier.padding(2.dp)
+        modifier = Modifier.fillMaxWidth()
     )
     return value
 }
