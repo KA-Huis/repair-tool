@@ -44,21 +44,7 @@ This project is licensed under the MIT License - ~~see the LICENSE.md file for d
 ~~see the DOCS for details~~
 
 ## Changelog
-All notable changes to this project will be documented in this file.
 
-#### [1.0.0] - 2022-01-10
-#### Added
-General
-- Loginscreen/ logout button
-- Extend repair for more info
-
-Volunteer
-- Repairlistview
-- Navigation between repair list and add repair
-- Ability to add repairs to the repair list
-
-Repairman
-- Repiarlistview
-- Ability for a repairman to change repairs
+~~see the Changelog for details~~
 
 
