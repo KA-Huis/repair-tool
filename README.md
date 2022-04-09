@@ -1,6 +1,9 @@
 # Repair tool
 
 Repair tool built for KA-Huis.
+KA-huis is an organization running on volunteers. Many (non-profit) organizations make use of the KA-huis for their own purposes.
+This tool is built as a school project. Analyses showed that the process of registering, executing and finishing chores is a time-consuming job.
+Many factors in the process are resulting in a failure of completing a chore. This app prevents most of these factors which gains efficiency and time.
 
 ## Overview
 
@@ -12,46 +15,36 @@ Clone or download the code from this GitHub. The stable version is the acceptanc
 
 ### Requirements
 
-Android Studio Arctic Fox | 2020.3.1 Patch 4 (latest tested version)   
-Android smartphone with at least SKD version 21 (Android 5.0 Lollipop) or emulator with equivalent specs.
+Up to date Android Studio
+Android smartphone with at least SDK version 21 (Android 5.0 Lollipop) or emulator with equivalent specs.
 
 ### Installation
 
-Open Android Studio and open a new project.  
-Go to 'Build > Generate Signed Bundle/APK > Build APK  
-Android Studio will download an APK to your PC, click the popup to locate the file.  
-The file is named something with 'APP_DEBUG', rename to whatever you want and sideload/install it on your phone.
-
-**Alternative**  
-Set up a Virtual Device using Android Studio. Klik the 'run' button to load the app on your virtual device.
+Open the source code in Android Studio en build the project.
+After building, run the application in an emulator or your actual Android phone.
 
 ## Credits
 
 * **Mitch Kessels** - _Creator_ - [MiKessels](https://github.com/MiKessels)
+* **Joey Vonck** - _Frontend_ - [joeyvonck](https://github.com/joeyvonck)
+* **Brit Prop** - _Frontend_ - [Prupke](https://github.com/Prupke)
+* **Cyril de Wit** - _Backend_ - [cyrildewit](https://github.com/cyrildewit)
+* **Jasper Stolwijk** - _Backend_ - [Hoopless](https://github.com/Hoopless)
+
+### Former team members
 * **Abas Sharif** - _Creator_ - [abassharif](https://github.com/abassharif)
-* **Joey Vonck** - _Creator_ - [joeyvonck](https://github.com/joeyvonck)
-* **Cyril de Wit** - _Creator_ - [cyrildewit](https://github.com/cyrildewit)
-
-
-## Changelog
-All notable changes to this project will be documented in this file.  
-
-#### [1.0.0] - 2022-01-10  
-#### Added  
-General
-- Loginscreen/ logout button
-- Extend repair for more info
-
-Volunteer
-- Repairlistview
-- Navigation between repair list and add repair
-- Ability to add repairs to the repair list
-
-Repairman
-- Repiarlistview
-- Ability for a repairman to change repairs
 
 
 ## License
 
 This project is licensed under the MIT License - ~~see the LICENSE.md file for details.~~
+
+## Docs
+
+~~see the DOCS for details~~
+
+## Changelog
+
+~~see the Changelog for details~~
+
+
