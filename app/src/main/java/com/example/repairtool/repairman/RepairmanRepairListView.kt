@@ -17,6 +17,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -112,7 +113,7 @@ private fun RepairList(repair: Repair, uName: String?) {
                         modifier = Modifier
                             .padding(16.dp)
                             .align(Alignment.CenterEnd),
-                        colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant)
+                        colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.background)
                     ) {
                         Text(text = "Wijzigen", color = MaterialTheme.colors.secondary)
 

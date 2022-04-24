@@ -80,21 +80,10 @@ fun LoginView() {
 
             Button(
                 onClick = {
-                    when (uName.lowercase()) {
-                        "vrijwilliger" -> { //TODO this is hardcoded :)
-                            val intent = Intent(context, VolunteerActivity::class.java)
-                            intent.putExtra("uName",uName)
-                            context.startActivity(intent)
-                            activity?.finish()
-                        }
-                        "klusjesman" -> {
-                            val intent = Intent(context, RepairmanActivity::class.java)
-                            intent.putExtra("uName",uName)
-                            context.startActivity(intent)
-                            activity?.finish()
-                        }
-                        else -> text = "Voer gebruikersnaam & wachtwoord in."
-                    }
+                    val intent = Intent(context, RepairmanActivity::class.java)
+                    intent.putExtra("uName",uName)
+                    context.startActivity(intent)
+                    activity?.finish()
                 },
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
                 modifier = Modifier.fillMaxWidth()
