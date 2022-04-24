@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.repairtool.repairman.RepairmanActivity
 import com.example.repairtool.repairs.Repair
 import com.example.repairtool.repairs.RepairList.repairList
 import com.example.repairtool.ui.theme.RepairToolTheme
@@ -57,8 +58,7 @@ fun AddRepair(uName: String?) {
                         buildingName,
                         repairDescription
                     )
-
-                    val intent = Intent(context, VolunteerActivity::class.java)
+                    val intent = Intent(context, RepairmanActivity::class.java)
                     intent.putExtra("uName",uName)
                     context.startActivity(intent)
                     activity?.finish()
@@ -72,7 +72,7 @@ fun AddRepair(uName: String?) {
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Button(onClick = {
-                    val intent = Intent(context, VolunteerActivity::class.java)
+                    val intent = Intent(context, RepairmanActivity::class.java)
                     intent.putExtra("uName",uName)
                     context.startActivity(intent)
                     activity?.finish()

@@ -8,16 +8,26 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.example.repairtool.MainActivity
 import com.example.repairtool.ui.theme.RepairToolTheme
+import com.example.repairtool.utilities.navigation.Screen
+import com.example.repairtool.volunteer.AddRepair
+import com.example.repairtool.volunteer.RepairView
 
 class RepairmanActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val navController = rememberNavController()
+            val items = listOf(Screen.RepairListScreen, Screen.AddRepairScreen)
             val uName = intent.getStringExtra("uName")
 
             RepairToolTheme {
@@ -45,8 +55,41 @@ class RepairmanActivity : ComponentActivity() {
                             backgroundColor = MaterialTheme.colors.primary
                         )
                     },
-                ) {
-                    RepairmanView(uName)
+
+                    bottomBar = { //BottomBar creates navigation
+                        BottomNavigation(
+                            backgroundColor = MaterialTheme.colors.primary
+                        ) {
+                            val navBackStackEntry by navController.currentBackStackEntryAsState()
+                            val currentRoute = navBackStackEntry?.arguments?.getString("KEY_ROUTE")
+
+                            items.forEach { screen ->
+                                BottomNavigationItem(
+                                    icon = { Icon(imageVector = screen.icon,
+                                        contentDescription = "") },
+                                    label = { Text(screen.label) },
+                                    unselectedContentColor = MaterialTheme.colors.secondary,
+                                    selected = currentRoute == screen.route,
+                                    onClick = {
+                                        navController.navigate(screen.route)
+                                    }
+                                )
+                            }
+                        }
+                    },
+                ) { innerPadding -> //Needed so BottomNav doesnt overlap anything
+                    Column(
+                        modifier = Modifier
+                            .padding(innerPadding),
+                    ) {
+                        NavHost(
+                            navController = navController,
+                            startDestination = "repairListScreen"
+                        ) {
+                            composable("repairListScreen") { RepairmanView(uName) }
+                            composable("addRepairScreen") { AddRepair(uName) }
+                        }
+                    }
                 }
             }
         }
