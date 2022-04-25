@@ -3,6 +3,7 @@
     package="com.example.repairtool">
 
     <application
+        android:name="com.kahuis.repairtool.RepairApplication"
         android:allowBackup="true"
         android:fullBackupOnly="true"
         android:icon="@drawable/ic_app_icon"

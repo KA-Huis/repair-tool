@@ -1,5 +1,5 @@
 package com.kahuis.repairtool.common
 
 object Constants {
-    val urlApi = "http://yoururlhere.com"
+    val BASE_URL = "https://acc-ka.jstlwk.dev"
 }

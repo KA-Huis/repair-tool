@@ -16,7 +16,7 @@ import com.kahuis.repairtool.common.utilities.dropdownmenu.priorityDropdown
 import com.kahuis.repairtool.common.utilities.textfield.multiLineInputTitle
 import com.kahuis.repairtool.common.utilities.textfield.singleLineInputTitle
 import com.kahuis.repairtool.presentation.repairman.RepairmanActivity
-import com.kahuis.repairtool.presentation.repairs.Repair
+import com.kahuis.repairtool.presentation.repairs.RepairOld
 import com.kahuis.repairtool.presentation.repairs.RepairList.repairList
 import com.kahuis.repairtool.presentation.ui.theme.RepairToolTheme
 
@@ -90,7 +90,7 @@ private fun SaveRepair(
     building: String,
     repairDescription: String
 ) {
-    repairList.add(Repair(4, repairName, building ,priority, repairDescription,"Geregistreerd"))
+    repairList.add(RepairOld(4, repairName, building ,priority, repairDescription,"Geregistreerd"))
 }
 
 @Preview (showBackground = true)

@@ -1,6 +1,6 @@
 package com.kahuis.repairtool.presentation.repairs
 
-data class Repair(
+data class RepairOld(
     val id: Int,
     val name: String,
     var building: String,

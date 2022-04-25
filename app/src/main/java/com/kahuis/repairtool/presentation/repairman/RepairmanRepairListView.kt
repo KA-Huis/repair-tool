@@ -21,7 +21,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kahuis.repairtool.presentation.repairs.Repair
+import com.kahuis.repairtool.presentation.repairs.RepairOld
 import com.kahuis.repairtool.presentation.repairs.RepairList
 import com.kahuis.repairtool.presentation.ui.theme.RepairToolTheme
 
@@ -31,21 +31,21 @@ fun RepairmanView(uName: String?) {
 }
 
 @Composable
-private fun GetRepairsList(repairs: List<Repair>, uName: String?) {
+private fun GetRepairsList(repairOlds: List<RepairOld>, uName: String?) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
             .padding(top = 16.dp)
     ) {
-        items(repairs) { repair ->
+        items(repairOlds) { repair ->
             RepairList(repair, uName)
         }
     }
 }
 
 @Composable
-private fun RepairList(repair: Repair, uName: String?) {
+private fun RepairList(repairOld: RepairOld, uName: String?) {
     RepairToolTheme {
         var isExpanded by remember { mutableStateOf(false) }
         val surfaceColor: Color by animateColorAsState(
@@ -85,11 +85,11 @@ private fun RepairList(repair: Repair, uName: String?) {
                 }
                 Column {
                     Text(
-                        text = "Naam reparatie:\n" + repair.name + "\n\n"
-                                + "Gebouw: " + repair.building + "\n"
-                                + "Prioriteit: " + repair.priority + "\n\n"
-                                + "Omschrijving:\n" + repair.description + "\n\n"
-                                + "Status: " + repair.status,
+                        text = "Naam reparatie:\n" + repairOld.name + "\n\n"
+                                + "Gebouw: " + repairOld.building + "\n"
+                                + "Prioriteit: " + repairOld.priority + "\n\n"
+                                + "Omschrijving:\n" + repairOld.description + "\n\n"
+                                + "Status: " + repairOld.status,
                         fontSize = 18.sp,
                         color = MaterialTheme.colors.secondary,
                         maxLines = if (isExpanded) Int.MAX_VALUE else 2,
@@ -105,7 +105,7 @@ private fun RepairList(repair: Repair, uName: String?) {
                         onClick = {
                             val intent = Intent(context, EditRepair::class.java)
                             intent.putExtra("uName", uName)
-                            intent.putExtra("id", repair.id)
+                            intent.putExtra("id", repairOld.id)
                             context.startActivity(intent)
                             activity?.finish()
                         },
