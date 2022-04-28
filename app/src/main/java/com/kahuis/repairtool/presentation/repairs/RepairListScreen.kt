@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -15,6 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.kahuis.repairtool.presentation.Screen
+import com.kahuis.repairtool.presentation.repairs.components.RepairListItem
 
 @Composable
 fun RepairListScreen(
@@ -24,7 +27,14 @@ fun RepairListScreen(
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
-
+            items(state.repairs) { repair ->
+                RepairListItem(
+                    repair = repair ,
+                    onItemClick = {
+                        navController.navigate(Screen.RepairListScreen.route + "/${repair.title}")
+                    }
+                )
+            }
         }
         if(state.error.isNotBlank()) {
             Text(

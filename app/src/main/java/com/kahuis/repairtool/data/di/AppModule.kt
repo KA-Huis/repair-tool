@@ -20,7 +20,7 @@ object AppModule {
     @Singleton
     fun provideRepairApi(): RepairApi {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL) //is MOCK needed, check constants
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RepairApi::class.java)

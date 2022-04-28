@@ -6,7 +6,7 @@ import retrofit2.http.POST
 
 interface RepairApi {
 
-    @GET("/api/v1/reparation_request")
+    @GET("/get_repair")
     suspend fun getRepairs(): List<RepairDto>
 
     //TODO URL!

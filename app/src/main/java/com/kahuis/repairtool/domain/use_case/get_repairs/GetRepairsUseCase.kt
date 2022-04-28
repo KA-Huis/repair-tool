@@ -15,13 +15,13 @@ class GetRepairsUseCase @Inject constructor(
 ){
     operator fun invoke(): Flow<Resource<List<Repair>>> = flow {
         try {
-            emit(Resource.Loading())
+            emit(Resource.Loading<List<Repair>>())
             val repairs = repository.getRepairs().map { it.toRepair() }
-            emit(Resource.Success(repairs))
+            emit(Resource.Success<List<Repair>>(repairs))
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "http exception"))
         } catch (e: IOException){
-            emit(Resource.Error("No internet??"))
+            emit(Resource.Error<List<Repair>>("No internet??"))
         }
     }
 }

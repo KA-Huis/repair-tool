@@ -4,15 +4,11 @@ import com.kahuis.repairtool.domain.model.Repair
 import java.sql.Date
 
 data class RepairDto(
-    val created_at: Date,
     val description: String,
-    val materials: String,
     val priority: String,
-    val reporter: String,
     val status: String,
     val title: String,
-    val updated_at: Date,
-    val uuid: Int
+    val location: String
 )
 
 fun RepairDto.toRepair(): Repair {
@@ -20,7 +16,6 @@ fun RepairDto.toRepair(): Repair {
         title = title,
         description = description,
         priority = priority,
-        status = status,
-        materials = materials
+        status = status
     )
 }
