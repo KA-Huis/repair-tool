@@ -1,9 +1,5 @@
 package com.kahuis.repairtool.presentation.repairs.repair_list
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -11,15 +7,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.kahuis.repairtool.common.utilities.navigation.Screen
-import com.kahuis.repairtool.presentation.repairs.repair_list.components.RepairListItem
 
 @Composable
 fun RepairListScreen(
@@ -31,8 +24,10 @@ fun RepairListScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Welkom $uName",
-                    color = MaterialTheme.colors.primary)
+                    Text(
+                        text = "Welkom $uName",
+                        color = MaterialTheme.colors.primary
+                    )
                 },
                 navigationIcon = {
                     IconButton(onClick = {
@@ -64,12 +59,15 @@ fun RepairListScreen(
             FloatingActionButton(
                 shape = CircleShape,
                 onClick = { /*TODO*/ }) {
-                  Icon(imageVector = Icons.Filled.Create, contentDescription = "Create button")
+                Icon(imageVector = Icons.Filled.Create, contentDescription = "Create button")
             }
         },
+        //TODO delete this content and UNCOMMENT the real content!!
         content = {
-            Text(text = "This is Content",
-            color = MaterialTheme.colors.primary)
+            Text(
+                text = "This is Content",
+                color = MaterialTheme.colors.primary
+            )
         }
 
 //        content = {

@@ -20,9 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.repairtool.R
 import com.kahuis.repairtool.common.Constants.uName
+import com.kahuis.repairtool.common.utilities.navigation.Screen
 import com.kahuis.repairtool.common.utilities.textfield.singelLinePasswordLabel
 import com.kahuis.repairtool.common.utilities.textfield.singleLineInputLabel
-import com.kahuis.repairtool.common.utilities.navigation.Screen
 
 //Main function to show loginpage
 @Composable
@@ -105,7 +105,8 @@ fun LoginScreen(
             }
         }
         Spacer(modifier = Modifier.padding(2.dp))
-        Text(text = text,
+        Text(
+            text = text,
             color = MaterialTheme.colors.secondary,
             fontWeight = FontWeight.Bold
         )
