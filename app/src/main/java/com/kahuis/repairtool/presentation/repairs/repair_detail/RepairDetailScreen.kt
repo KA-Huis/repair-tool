@@ -51,27 +51,7 @@ fun RepairDetailScreen(
                         text = repair.description,
                         style = MaterialTheme.typography.body2
                     )
-                    Spacer(modifier = Modifier.height(15.dp))
-                    Text(
-                        text = "Tags",
-                        style = MaterialTheme.typography.h3
-                    )
-                    Spacer(modifier = Modifier.height(15.dp))
-                    Text(
-                        text = "Team members",
-                        style = MaterialTheme.typography.h3
-                    )
-                    Spacer(modifier = Modifier.height(15.dp))
                 }
-//                items(coin.team) { teamMember ->
-//                    TeamListItem(
-//                        teamMember = teamMember,
-//                        modifier = Modifier
-//                            .fillMaxWidth()
-//                            .padding(10.dp)
-//                    )
-//                    Divider()
-//                }
             }
         }
         if(state.error.isNotBlank()) {

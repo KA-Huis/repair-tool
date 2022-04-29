@@ -21,15 +21,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.repairtool.R
 import com.kahuis.repairtool.presentation.repairman.RepairmanActivity
 import com.kahuis.repairtool.presentation.ui.theme.RepairToolTheme
 import com.kahuis.repairtool.common.utilities.textfield.singelLinePasswordLabel
 import com.kahuis.repairtool.common.utilities.textfield.singleLineInputLabel
+import com.kahuis.repairtool.presentation.Screen
 
 //Main function to show loginpage
 @Composable
-fun LoginView() {
+fun LoginScreen(
+    navController: NavController
+) {
     var text by remember { mutableStateOf("") }
     val count = remember { mutableStateOf(0) }
 
@@ -87,15 +91,12 @@ fun LoginView() {
 
             Button(
                 onClick = {
-                    val intent = Intent(context, RepairmanActivity::class.java)
-                    intent.putExtra("uName",uName)
-                    context.startActivity(intent)
-                    activity?.finish()
+                    navController.navigate(Screen.RepairListScreen.route)
                 },
-                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Inloggen", color = MaterialTheme.colors.secondary)
+                Text(text = "Inloggen", color = MaterialTheme.colors.primary)
             }
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -105,10 +106,10 @@ fun LoginView() {
                 onClick = {
                     text = "Deze functie werkt nog niet."
                 },
-                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primaryVariant),
+                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Wachtwoord vergeten", color = MaterialTheme.colors.secondaryVariant)
+                Text(text = "Wachtwoord vergeten", color = MaterialTheme.colors.primary)
             }
         }
         Spacer(modifier = Modifier.padding(2.dp))
@@ -116,13 +117,5 @@ fun LoginView() {
             color = MaterialTheme.colors.secondary,
             fontWeight = FontWeight.Bold
         )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun DefaultPreview() {
-    RepairToolTheme {
-        LoginView()
     }
 }

@@ -3,14 +3,23 @@
     <style name="Theme.RepairTool" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryVariant">@color/CorporateRedDark</item>
-        <item name="colorOnPrimary">@color/CorporateGreyDark</item>
+        <item name="colorPrimaryVariant">@color/CorporateRed</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/CorporateRedDark</item>
-        <item name="colorSecondaryVariant">@color/CorporateRedDark</item>
-        <item name="colorOnSecondary">@color/CorporateGreyDark</item>
+        <item name="colorSecondary">@color/CorporateRed</item>
+        <item name="colorSecondaryVariant">@color/CorporateRed</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.RepairTool.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.RepairTool.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.RepairTool.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

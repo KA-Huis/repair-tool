@@ -18,11 +18,11 @@ fun singleLineInputLabel(label: String): String {
         singleLine = true,
         value = value,
         onValueChange = { value = it},
-        label = { Text(label, color = MaterialTheme.colors.secondary) },
+        label = { Text(label, color = MaterialTheme.colors.primary) },
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
-            textColor = MaterialTheme.colors.secondary,
-            unfocusedIndicatorColor = MaterialTheme.colors.secondary
+            textColor = MaterialTheme.colors.primary,
+            unfocusedIndicatorColor = MaterialTheme.colors.primary
         ),
         modifier = Modifier.fillMaxWidth()
     )
@@ -36,12 +36,12 @@ fun singelLinePasswordLabel(label: String) : String {
         singleLine = true,
         value = value,
         onValueChange = { value = it},
-        label = { Text(label, color = MaterialTheme.colors.secondary) },
+        label = { Text(label, color = MaterialTheme.colors.primary) },
         visualTransformation = PasswordVisualTransformation(),
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
-            textColor = MaterialTheme.colors.secondary,
-            unfocusedIndicatorColor = MaterialTheme.colors.secondary
+            textColor = MaterialTheme.colors.primary,
+            unfocusedIndicatorColor = MaterialTheme.colors.primary
         ),
         modifier = Modifier.fillMaxWidth()
     )

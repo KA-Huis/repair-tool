@@ -7,6 +7,7 @@ import androidx.compose.material.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.kahuis.repairtool.presentation.login.LoginScreen
 import com.kahuis.repairtool.presentation.repairs.repair_list.RepairListScreen
 import com.kahuis.repairtool.presentation.repairs.repair_detail.RepairDetailScreen
 import com.kahuis.repairtool.presentation.ui.theme.RepairToolTheme
@@ -22,8 +23,13 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.RepairListScreen.route
+                        startDestination = Screen.LoginScreen.route
                     ) {
+                        composable(
+                            route = Screen.LoginScreen.route
+                        ) {
+                            LoginScreen(navController)
+                        }
                         composable(
                             route = Screen.RepairListScreen.route
                         ) {
