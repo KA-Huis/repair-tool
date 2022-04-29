@@ -9,11 +9,11 @@ import retrofit2.http.Path
 interface RepairApi {
 
     //Get all repairs available
-    @GET("/get_repair")
+    @GET("/get_repairs/")
     suspend fun getRepairs(): List<RepairDto>
 
     //Get one single repair for detailed view
-    @GET("/get_repair/{repairId")
+    @GET("/get_repair/{repairId}")
     suspend fun getRepair(@Path("repairId")repairId: String): RepairDetailDto
 
     //TODO URL!

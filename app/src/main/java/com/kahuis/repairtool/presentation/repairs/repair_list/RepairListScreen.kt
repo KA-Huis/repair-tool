@@ -31,7 +31,7 @@ fun RepairListScreen(
                 RepairListItem(
                     repair = repair ,
                     onItemClick = {
-                        navController.navigate(Screen.RepairListScreen.route + "/${repair.title}")
+                        navController.navigate(Screen.RepairDetailScreen.route + "/${repair.id}")
                     }
                 )
             }
