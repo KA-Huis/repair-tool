@@ -68,14 +68,6 @@ fun LoginScreen(
         Spacer(modifier = Modifier.padding(top = 30.dp))
 
         //Login button AND forgot password button
-        /*
-        Op dit moment moet de navigatie en code die hier voor gebruikt wordt nog gemaakt worden.
-        Inloggen kan door op de knop 'inloggen' te klikken zonder username of wachtwoord te gebruiken.
-
-        Dit is bij wijze van test even gedaan om 1 view te maken (die van de klusjesman)
-
-        TODO navigatie zo maken dat username en wachtwoord weer nodig zijn
-         */
         Column(
             modifier = Modifier
                 .fillMaxWidth()
