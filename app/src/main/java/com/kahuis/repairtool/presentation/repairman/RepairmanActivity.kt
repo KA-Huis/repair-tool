@@ -18,7 +18,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.kahuis.repairtool.presentation.MainActivity
 import com.kahuis.repairtool.presentation.ui.theme.RepairToolTheme
-import com.kahuis.repairtool.common.utilities.navigation.Screen
+import com.kahuis.repairtool.common.utilities.navigation.ScreenOld
 import com.kahuis.repairtool.presentation.volunteer.AddRepair
 
 class RepairmanActivity : ComponentActivity() {
@@ -26,7 +26,7 @@ class RepairmanActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-            val items = listOf(Screen.RepairListScreen, Screen.AddRepairScreen)
+            val items = listOf(ScreenOld.RepairListScreenOld, ScreenOld.AddRepairScreenOld)
             val uName = intent.getStringExtra("uName")
 
             RepairToolTheme {
