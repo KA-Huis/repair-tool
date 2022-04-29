@@ -7,4 +7,6 @@ object Constants {
     } else {
         "https://acc-ka.jstlwk.dev"
     }
+
+    const val PARAM_REPAIR_ID = "repairId"
 }

@@ -1,4 +1,4 @@
-package com.kahuis.repairtool.presentation.repairs
+package com.kahuis.repairtool.presentation.repairs.repair_list
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.kahuis.repairtool.presentation.Screen
-import com.kahuis.repairtool.presentation.repairs.components.RepairListItem
+import com.kahuis.repairtool.presentation.repairs.repair_list.components.RepairListItem
 
 @Composable
 fun RepairListScreen(

@@ -1,4 +1,4 @@
-package com.kahuis.repairtool.presentation.repairs
+package com.kahuis.repairtool.presentation.repairs.repair_list
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

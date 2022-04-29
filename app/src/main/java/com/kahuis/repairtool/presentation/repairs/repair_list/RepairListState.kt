@@ -1,4 +1,4 @@
-package com.kahuis.repairtool.presentation.repairs
+package com.kahuis.repairtool.presentation.repairs.repair_list
 
 import com.kahuis.repairtool.domain.model.Repair
 

@@ -1,7 +1,6 @@
-package com.kahuis.repairtool.data.dto
+package com.kahuis.repairtool.data.remote.dto
 
 import com.kahuis.repairtool.domain.model.Repair
-import java.sql.Date
 
 data class RepairDto(
     val description: String,
