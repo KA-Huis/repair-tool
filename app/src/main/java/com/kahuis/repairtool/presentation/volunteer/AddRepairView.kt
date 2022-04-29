@@ -41,7 +41,7 @@ fun AddRepair(uName: String?) {
 
             //Get description of repair
             val repairDescription = multiLineInputTitle("Omschrijving reparatie")
-            
+
             Spacer(modifier = Modifier.height(32.dp))
 
             //Buttons
