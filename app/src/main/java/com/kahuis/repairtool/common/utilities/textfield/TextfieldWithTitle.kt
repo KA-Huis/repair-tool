@@ -9,22 +9,22 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 
 @Composable
 fun singleLineInputTitle(title: String) : String {
     var value by rememberSaveable { mutableStateOf("") }
     Text(
         text = title,
-        color = MaterialTheme.colors.secondary
+        fontWeight = Bold,
+        style = MaterialTheme.typography.body1
     )
     TextField(
         singleLine = true,
         value = value,
         onValueChange = { value = it},
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = Color.Transparent,
-            textColor = MaterialTheme.colors.secondary,
-            unfocusedIndicatorColor = MaterialTheme.colors.secondary
+            backgroundColor = Color.Transparent
         ),
         modifier = Modifier.fillMaxWidth()
     )
@@ -36,15 +36,14 @@ fun multiLineInputTitle(title: String) : String {
     var value by rememberSaveable { mutableStateOf("") }
     Text(
         text = title,
-        color = MaterialTheme.colors.secondary,
+        fontWeight = Bold,
+        style = MaterialTheme.typography.body1
     )
     TextField(
         value = value,
         onValueChange = { value = it},
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
-            textColor = MaterialTheme.colors.secondary,
-            unfocusedIndicatorColor = MaterialTheme.colors.secondary
         ),
         modifier = Modifier.fillMaxWidth()
     )

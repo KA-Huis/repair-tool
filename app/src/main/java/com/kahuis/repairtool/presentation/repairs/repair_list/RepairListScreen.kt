@@ -4,19 +4,19 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Create
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.kahuis.repairtool.common.utilities.navigation.Screen
+import com.kahuis.repairtool.common.Constants.userName
+import com.kahuis.repairtool.common.navigation.Screen
 
 @Composable
 fun RepairListScreen(
-    uName: String?,
     navController: NavController,
     viewModel: RepairListViewModel = hiltViewModel()
 ) {
@@ -25,14 +25,16 @@ fun RepairListScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Welkom $uName",
+                        text = "Welkom $userName",
                         color = MaterialTheme.colors.primary
                     )
                 },
                 navigationIcon = {
                     IconButton(onClick = {
                         navController.navigate(Screen.LoginScreen.route) {
-                            popUpTo(Screen.LoginScreen.route)
+                            popUpTo(Screen.LoginScreen.route) {
+                                inclusive = true
+                            }
                         }
                     }) {
                         Icon(Icons.Filled.ArrowBack, "backIcon")
@@ -58,53 +60,62 @@ fun RepairListScreen(
         floatingActionButton = {
             FloatingActionButton(
                 shape = CircleShape,
-                onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Filled.Create, contentDescription = "Create button")
+                onClick = {
+                    navController.navigate(Screen.AddRepairScreen.route) {
+                        popUpTo(Screen.AddRepairScreen.route) {
+                            inclusive = true
+                        }
+                    }
+                }) {
+                Icon(imageVector = Icons.Filled.Add, contentDescription = "Create button")
             }
         },
-        //TODO delete this content and UNCOMMENT the real content!!
+        //TODO delete this content and UNCOMMENT the real content!! T
+        //This is to save some API requests :)
         content = {
             Text(
-                text = "This is Content",
+                text = "No content",
                 color = MaterialTheme.colors.primary
             )
-        }
-
-//        content = {
-//            Column(
-//                modifier = Modifier
-//                    .fillMaxSize(),
-//                verticalArrangement = Arrangement.Center,
-//                horizontalAlignment = Alignment.CenterHorizontally
-//            ) {
-//                val state = viewModel.state.value
-//                Box(modifier = Modifier.fillMaxSize()) {
-//                    LazyColumn(modifier = Modifier.fillMaxSize()) {
-//                        items(state.repairs) { repair ->
-//                            RepairListItem(
-//                                repair = repair,
-//                                onItemClick = {
-//                                    navController.navigate(Screen.RepairDetailScreen.route + "/${repair.id}")
-//                                }
-//                            )
-//                        }
-//                    }
-//                    if (state.error.isNotBlank()) {
-//                        Text(
-//                            text = state.error,
-//                            color = MaterialTheme.colors.error,
-//                            textAlign = TextAlign.Center,
-//                            modifier = Modifier
-//                                .fillMaxWidth()
-//                                .padding(horizontal = 20.dp)
-//                                .align(Alignment.Center)
-//                        )
-//                    }
-//                    if (state.isLoading) {
-//                        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-//                    }
-//                }
-//            }
-//        }
+        },
+/*
+        content = {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                val state = viewModel.state.value
+                Box(modifier = Modifier.fillMaxSize()) {
+                    LazyColumn(modifier = Modifier.fillMaxSize()) {
+                        items(state.repairs) { repair ->
+                            repairId = repair.id
+                            RepairListItem(
+                                repair = repair,
+                                onItemClick = {
+                                    navController.navigate(Screen.RepairDetailScreen.withArgs(
+                                        repairId))
+                                }
+                            )
+                        }
+                    }
+                    if (state.error.isNotBlank()) {
+                        Text(
+                            text = state.error,
+                            color = MaterialTheme.colors.error,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 20.dp)
+                                .align(Alignment.Center)
+                        )
+                    }
+                    if (state.isLoading) {
+                        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                    }
+                }
+            }
+        }*/
     )
 }

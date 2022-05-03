@@ -1,12 +1,11 @@
-package com.kahuis.repairtool.common.utilities.navigation
+package com.kahuis.repairtool.common.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.kahuis.repairtool.presentation.login.LoginScreen
+import com.kahuis.repairtool.presentation.repairs.add_repair.AddRepair
 import com.kahuis.repairtool.presentation.repairs.repair_detail.RepairDetailScreen
 import com.kahuis.repairtool.presentation.repairs.repair_list.RepairListScreen
 
@@ -24,23 +23,19 @@ fun Navigation() {
             LoginScreen(navController)
         }
         composable(
-            route = Screen.RepairListScreen.route + "/{uName}", //?uName= ==optional
-            arguments = listOf(
-                navArgument("uName") {
-                    type = NavType.StringType
-                    defaultValue = "Test"
-                }
-            )
-        ) { entry ->
-            RepairListScreen(
-                uName = entry.arguments?.getString("uName"),
-                navController
-            )
+            route = Screen.RepairListScreen.route
+        ) {
+            RepairListScreen(navController)
         }
         composable(
-            route = Screen.RepairDetailScreen.route
+            route = Screen.RepairDetailScreen.withArgs("{repairId}")
         ) {
-            RepairDetailScreen()
+            RepairDetailScreen(navController)
+        }
+        composable(
+            route = Screen.AddRepairScreen.route
+        ) {
+            AddRepair(navController)
         }
     }
 }
