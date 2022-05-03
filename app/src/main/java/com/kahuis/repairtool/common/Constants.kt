@@ -9,5 +9,5 @@ object Constants {
     }
 
     const val PARAM_REPAIR_ID = "repairId"
-    var uName: String = ""
+    var userName: String = ""
 }

@@ -19,7 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.repairtool.R
-import com.kahuis.repairtool.common.Constants.uName
+import com.kahuis.repairtool.common.Constants.userName
 import com.kahuis.repairtool.common.utilities.navigation.Screen
 import com.kahuis.repairtool.common.utilities.textfield.singelLinePasswordLabel
 import com.kahuis.repairtool.common.utilities.textfield.singleLineInputLabel
@@ -61,7 +61,7 @@ fun LoginScreen(
         }
 
         //Get username AND password from loginPackage
-        uName = singleLineInputLabel("Gebruikersnaam")
+        userName = singleLineInputLabel("Gebruikersnaam")
         Spacer(modifier = Modifier.padding(8.dp))
         val pWord = singelLinePasswordLabel("Wachtwoord")
 
@@ -75,7 +75,7 @@ fun LoginScreen(
             //LOGIN
             Button(
                 onClick = {
-                    navController.navigate(Screen.RepairListScreen.withArgs(uName))
+                    navController.navigate(Screen.RepairListScreen.withArgs(userName))
                 },
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
                 modifier = Modifier.fillMaxWidth()
