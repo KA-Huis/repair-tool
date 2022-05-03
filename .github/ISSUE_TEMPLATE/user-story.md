@@ -7,17 +7,15 @@ assignees: ''
 
 ---
 
-**Als een** [gebruiker] **wil ik** [doel van de story], **zodat** [reden van de story]
+**As a** [user] **I want to** [goal of your story], **so I** [reason of your story]
 
-### Omschrijving
+### Description
 
-Schrijf een korte omschrijving met bijvoorbeeld de context ter ondersteuning van de story.
+Write a short description of your userstory.
 
-### Acceptatiecriteria
+### Acceptance criteria
 
 1. Criteria 1
 2. Criteria 2 ...
 
-### Hulpmiddelen
-
-Hier kunnen eventueel hulpmiddelen bijgesloten worden.
+### Tools
