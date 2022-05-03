@@ -7,8 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="CorporateRed">#FFff5757</color>
-    <color name="CorporateGrey">#FFcecece</color>
-    <color name="CorporateRedDark">#FFD62F2F</color>
-    <color name="CorporateGreyDark">#FF6E6E6E</color>
+    <color name="CorporateRed">#FFFF003B</color>
+    <color name="background">#FF252837</color>
 </resources>
