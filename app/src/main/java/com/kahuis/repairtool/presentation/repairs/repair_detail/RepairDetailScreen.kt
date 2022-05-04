@@ -1,5 +1,6 @@
 package com.kahuis.repairtool.presentation.repairs.repair_detail
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -12,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle.Companion.Italic
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
@@ -29,12 +32,22 @@ fun RepairDetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
+                modifier = Modifier
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                MaterialTheme.colors.secondary,
+                                MaterialTheme.colors.background
+                            )
+                        )
+                    ),
                 title = {
                     Text(
                         text = "Welkom ${Constants.userName}",
                         color = MaterialTheme.colors.primary
                     )
                 },
+                backgroundColor = Color.Transparent,
                 navigationIcon = {
                     IconButton(onClick = {
                         navController.navigate(Screen.RepairListScreen.route) {
@@ -46,8 +59,7 @@ fun RepairDetailScreen(
                         Icon(Icons.Filled.ArrowBack, "backIcon")
                     }
                 },
-                backgroundColor = MaterialTheme.colors.secondary,
-                elevation = 10.dp
+                elevation = 0.dp
             )
         },
         bottomBar = {
@@ -64,10 +76,25 @@ fun RepairDetailScreen(
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
         floatingActionButton = {
-            FloatingActionButton(
-                shape = CircleShape,
-                onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Filled.Edit, contentDescription = "Edit button")
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .size(70.dp)
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                MaterialTheme.colors.secondary,
+                                MaterialTheme.colors.background
+                            )
+                        ),
+                        shape = CircleShape
+                    )
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Edit,
+                    contentDescription = "Edit button",
+                    tint = Color.White
+                )
             }
         },
 

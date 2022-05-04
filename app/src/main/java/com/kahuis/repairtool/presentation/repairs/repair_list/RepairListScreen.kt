@@ -1,5 +1,9 @@
 package com.kahuis.repairtool.presentation.repairs.repair_list
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -7,13 +11,19 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.kahuis.repairtool.common.Constants.userName
+import com.kahuis.repairtool.common.Constants
+import com.kahuis.repairtool.common.Constants.repairId
 import com.kahuis.repairtool.common.navigation.Screen
+import com.kahuis.repairtool.presentation.repairs.repair_list.components.RepairListItem
 
 @Composable
 fun RepairListScreen(
@@ -23,12 +33,22 @@ fun RepairListScreen(
     Scaffold(
         topBar = {
             TopAppBar(
+                modifier = Modifier
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                MaterialTheme.colors.secondary,
+                                MaterialTheme.colors.background
+                            )
+                        )
+                    ),
                 title = {
                     Text(
-                        text = "Welkom $userName",
+                        text = "Welkom ${Constants.userName}",
                         color = MaterialTheme.colors.primary
                     )
                 },
+                backgroundColor = Color.Transparent,
                 navigationIcon = {
                     IconButton(onClick = {
                         navController.navigate(Screen.LoginScreen.route) {
@@ -40,8 +60,7 @@ fun RepairListScreen(
                         Icon(Icons.Filled.ArrowBack, "backIcon")
                     }
                 },
-                backgroundColor = MaterialTheme.colors.secondary,
-                elevation = 10.dp
+                elevation = 0.dp
             )
         },
         bottomBar = {
@@ -58,27 +77,43 @@ fun RepairListScreen(
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
         floatingActionButton = {
-            FloatingActionButton(
-                shape = CircleShape,
+            IconButton(
                 onClick = {
                     navController.navigate(Screen.AddRepairScreen.route) {
                         popUpTo(Screen.AddRepairScreen.route) {
                             inclusive = true
                         }
                     }
-                }) {
-                Icon(imageVector = Icons.Filled.Add, contentDescription = "Create button")
+                },
+                modifier = Modifier
+                    .size(70.dp)
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                MaterialTheme.colors.secondary,
+                                MaterialTheme.colors.background
+                            )
+                        ),
+                        shape = CircleShape
+                    )
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Add,
+                    contentDescription = "Create button",
+                    tint = Color.White
+                )
             }
         },
-        //TODO delete this content and UNCOMMENT the real content!! T
-        //This is to save some API requests :)
-        content = {
-            Text(
-                text = "No content",
-                color = MaterialTheme.colors.primary
-            )
-        },
-/*
+
+//        //TODO delete this content and UNCOMMENT the real content!! T
+//        //This is to save some API requests :)
+//        content = {
+//            Text(
+//                text = "No content",
+//                color = MaterialTheme.colors.primary
+//            )
+//        },
+
         content = {
             Column(
                 modifier = Modifier
@@ -120,30 +155,5 @@ fun RepairListScreen(
                 }
             }
         }
-
-        import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import com.kahuis.repairtool.common.Constants.repairId
-import com.kahuis.repairtool.common.Constants.userName
-import com.kahuis.repairtool.common.navigation.Screen
-import com.kahuis.repairtool.presentation.repairs.repair_list.components.RepairListItem
-
-
-        */
     )
 }
