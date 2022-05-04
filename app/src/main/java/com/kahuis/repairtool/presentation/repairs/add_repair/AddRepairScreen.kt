@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
@@ -71,11 +72,13 @@ fun AddRepair(
             Box(modifier = Modifier.fillMaxSize()) {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(20.dp)
+                    contentPadding = PaddingValues(20.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     item {
                         Text(
                             text = "Klus aanmelden",
+                            color = MaterialTheme.colors.primary,
                             style = MaterialTheme.typography.h3,
                         )
                         CreateSpace()

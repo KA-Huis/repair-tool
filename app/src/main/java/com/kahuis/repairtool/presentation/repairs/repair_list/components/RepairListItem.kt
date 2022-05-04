@@ -1,7 +1,10 @@
 package com.kahuis.repairtool.presentation.repairs.repair_list.components
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -30,6 +33,7 @@ fun RepairListItem(
         SelectionContainer {
             Text(
                 text = repair.title,
+                color = MaterialTheme.colors.primary,
                 style = MaterialTheme.typography.body1,
                 fontWeight = Bold,
                 overflow = TextOverflow.Ellipsis,

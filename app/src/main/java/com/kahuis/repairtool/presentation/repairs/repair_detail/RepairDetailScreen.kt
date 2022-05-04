@@ -86,6 +86,7 @@ fun RepairDetailScreen(
                             ) {
                                 Text(
                                     text = repair.title,
+                                    color = MaterialTheme.colors.primary,
                                     style = MaterialTheme.typography.h3,
                                     modifier = Modifier.weight(8f)
                                 )
@@ -130,11 +131,13 @@ private fun TextBlockWithTitle(title: String, description: String) {
     Text(
         text = title,
         fontWeight = Bold,
+        color = MaterialTheme.colors.primary,
         style = MaterialTheme.typography.body1
     )
     Text(
         text = description,
         fontStyle = Italic,
+        color = MaterialTheme.colors.primary,
         style = MaterialTheme.typography.body1
     )
 }

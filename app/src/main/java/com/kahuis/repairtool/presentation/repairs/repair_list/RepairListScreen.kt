@@ -94,8 +94,11 @@ fun RepairListScreen(
                             RepairListItem(
                                 repair = repair,
                                 onItemClick = {
-                                    navController.navigate(Screen.RepairDetailScreen.withArgs(
-                                        repairId))
+                                    navController.navigate(
+                                        Screen.RepairDetailScreen.withArgs(
+                                            repairId
+                                        )
+                                    )
                                 }
                             )
                         }
@@ -116,6 +119,31 @@ fun RepairListScreen(
                     }
                 }
             }
-        }*/
+        }
+
+        import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.kahuis.repairtool.common.Constants.repairId
+import com.kahuis.repairtool.common.Constants.userName
+import com.kahuis.repairtool.common.navigation.Screen
+import com.kahuis.repairtool.presentation.repairs.repair_list.components.RepairListItem
+
+
+        */
     )
 }
