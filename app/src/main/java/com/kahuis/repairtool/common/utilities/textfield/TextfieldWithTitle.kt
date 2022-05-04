@@ -40,6 +40,7 @@ fun singleLineInputTitle(title: String) : String {
             colors = TextFieldDefaults.textFieldColors(
                 textColor = Color.Black,
                 backgroundColor = Color.White,
+                cursorColor = Color.Black,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
@@ -70,6 +71,7 @@ fun multiLineInputTitle(title: String) : String {
             colors = TextFieldDefaults.textFieldColors(
                 textColor = Color.Black,
                 backgroundColor = Color.White,
+                cursorColor = Color.Black,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),

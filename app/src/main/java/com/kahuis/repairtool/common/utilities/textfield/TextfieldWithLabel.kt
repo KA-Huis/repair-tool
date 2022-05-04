@@ -32,6 +32,7 @@ fun singleLineInputLabel(label: String): String {
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
+                cursorColor = Color.Black,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
@@ -43,7 +44,7 @@ fun singleLineInputLabel(label: String): String {
 }
 
 @Composable
-fun singelLinePasswordLabel(label: String) : String {
+fun singleLinePasswordLabel(label: String) : String {
     var value by rememberSaveable { mutableStateOf("") }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
@@ -58,6 +59,7 @@ fun singelLinePasswordLabel(label: String) : String {
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.White,
                 textColor = Color.Black,
+                cursorColor = Color.Black,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
