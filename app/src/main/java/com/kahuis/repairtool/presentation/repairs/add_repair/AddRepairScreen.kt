@@ -104,9 +104,11 @@ fun AddRepair(
         },
 
         content = { padding ->
-            Box(modifier = Modifier
-                .padding(padding)
-                .fillMaxSize()) {
+            Box(
+                modifier = Modifier
+                    .padding(padding)
+                    .fillMaxSize()
+            ) {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(20.dp),
