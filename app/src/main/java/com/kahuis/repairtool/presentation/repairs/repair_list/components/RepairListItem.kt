@@ -32,7 +32,7 @@ fun RepairListItem(
     ) {
         SelectionContainer {
             Text(
-                text = repair.title,
+                text = repair.title + " (${repair.location})",
                 color = MaterialTheme.colors.primary,
                 style = MaterialTheme.typography.body1,
                 fontWeight = Bold,

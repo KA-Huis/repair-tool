@@ -127,6 +127,7 @@ fun RepairDetailScreen(
                                         .weight(2f)
                                 )
                             }
+                            TextBlockWithTitle("Locatie", repair.space_id)
                             TextBlockWithTitle("Omschrijving: ", repair.description)
                             TextBlockWithTitle("Prioriteit: ", repair.priority_type)
                         }

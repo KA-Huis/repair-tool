@@ -68,9 +68,15 @@ fun LoginScreen(
             userName = singleLineInputLabel("Gebruikersnaam")
             Spacer(modifier = Modifier.height(20.dp))
             val passWord = singleLinePasswordLabel("Wachtwoord")
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Text(
+                text = text,
+                color = MaterialTheme.colors.secondary,
+                fontWeight = Bold
+            )
             Spacer(modifier = Modifier.height(70.dp))
 
-            //Login button AND forgot password button
             //LOGIN
             IconButton(
             onClick = {
@@ -130,11 +136,5 @@ fun LoginScreen(
 //            }
 
         }
-        Spacer(modifier = Modifier.padding(2.dp))
-        Text(
-            text = text,
-            color = MaterialTheme.colors.secondary,
-            fontWeight = Bold
-        )
     }
 }
