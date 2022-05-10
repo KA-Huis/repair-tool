@@ -1,27 +1,25 @@
 package com.kahuis.repairtool.presentation.login
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.repairtool.R
 import com.kahuis.repairtool.common.Constants.userName
-import com.kahuis.repairtool.common.utilities.navigation.Screen
-import com.kahuis.repairtool.common.utilities.textfield.singelLinePasswordLabel
+import com.kahuis.repairtool.common.navigation.Screen
+import com.kahuis.repairtool.common.utilities.textfield.singleLinePasswordLabel
 import com.kahuis.repairtool.common.utilities.textfield.singleLineInputLabel
 
 //Main function to show loginpage
@@ -61,46 +59,82 @@ fun LoginScreen(
         }
 
         //Get username AND password from loginPackage
-        userName = singleLineInputLabel("Gebruikersnaam")
-        Spacer(modifier = Modifier.padding(8.dp))
-        val pWord = singelLinePasswordLabel("Wachtwoord")
-
-        Spacer(modifier = Modifier.padding(top = 30.dp))
-
-        //Login button AND forgot password button
         Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxWidth()
+                .padding(50.dp, 20.dp, 50.dp, 0.dp)
         ) {
+            Spacer(modifier = Modifier.height(20.dp))
+            userName = singleLineInputLabel("Gebruikersnaam")
+            Spacer(modifier = Modifier.height(20.dp))
+            val passWord = singleLinePasswordLabel("Wachtwoord")
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Text(
+                text = text,
+                color = MaterialTheme.colors.secondary,
+                fontWeight = Bold
+            )
+            Spacer(modifier = Modifier.height(70.dp))
+
             //LOGIN
-            Button(
-                onClick = {
-                    navController.navigate(Screen.RepairListScreen.withArgs(userName))
-                },
-                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
-                modifier = Modifier.fillMaxWidth()
+            IconButton(
+            onClick = {
+                if (userName != "")
+                    navController.navigate(Screen.RepairListScreen.route)
+                else
+                    text = "Vul een gebruikersnaam in."
+            },
+            modifier = Modifier
+                .size(120.dp)
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            MaterialTheme.colors.secondary,
+                            MaterialTheme.colors.background
+                        )
+                    ),
+                    shape = CircleShape
+                )
             ) {
-                Text(text = "Inloggen", color = MaterialTheme.colors.primary)
+                Text(
+                    text = "Login",
+                    style = MaterialTheme.typography.h5,
+                    fontWeight = Bold,
+                    color = Color.White
+                )
             }
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            //FORGOT PASSWORD
-            Button(
-                onClick = {
-                    text = "Deze functie werkt nog niet."
-                },
-                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text = "Wachtwoord vergeten", color = MaterialTheme.colors.primary)
-            }
+//            //FORGOT PASSWORD
+//            Button(
+//                elevation = null,
+//                colors = ButtonDefaults.buttonColors(
+//                    backgroundColor = Color.Transparent
+//                ),
+//                contentPadding = PaddingValues(),
+//                onClick = { text = "Deze functie werkt nog niet." })
+//            {
+//                Box(
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .background(
+//                            brush = Brush.verticalGradient(
+//                                colors = listOf(
+//                                    MaterialTheme.colors.secondary,
+//                                    MaterialTheme.colors.background
+//                                )
+//                            ),
+//                            shape = CircleShape
+//                        )
+//                        .padding(horizontal = 16.dp, vertical = 8.dp),
+//                    contentAlignment = Alignment.Center
+//                ) {
+//                    Text(text = "Wachtwoord vergeten", color = Color.White)
+//                }
+//            }
+
         }
-        Spacer(modifier = Modifier.padding(2.dp))
-        Text(
-            text = text,
-            color = MaterialTheme.colors.secondary,
-            fontWeight = FontWeight.Bold
-        )
     }
 }

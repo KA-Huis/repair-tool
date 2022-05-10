@@ -1,6 +1,6 @@
 package com.kahuis.repairtool.data.di
 
-import com.kahuis.repairtool.common.Constants.BASE_URL
+import com.kahuis.repairtool.common.Constants.MOCK_API_URL
 import com.kahuis.repairtool.data.remote.RepairApi
 import com.kahuis.repairtool.data.repository.RepairRepositoryImpl
 import com.kahuis.repairtool.domain.repository.RepairRepository
@@ -20,7 +20,7 @@ object AppModule {
     @Singleton
     fun provideRepairApi(): RepairApi {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL) //is MOCK needed, check constants
+            .baseUrl(MOCK_API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RepairApi::class.java)
