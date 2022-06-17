@@ -1,4 +1,4 @@
-package com.kahuis.repairtool.presentation.repairs.repair_detail
+package com.kahuis.repairtool.presentation.reparations.reparation_detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -27,7 +27,7 @@ import com.kahuis.repairtool.common.navigation.Screen
 @Composable
 fun RepairDetailScreen(
     navController: NavController,
-    viewModel: RepairDetailViewModel = hiltViewModel()
+    viewModel: ReparationDetailViewModel = hiltViewModel()
 ) {
     Scaffold(
         topBar = {
@@ -50,8 +50,8 @@ fun RepairDetailScreen(
                 backgroundColor = Color.Transparent,
                 navigationIcon = {
                     IconButton(onClick = {
-                        navController.navigate(Screen.RepairListScreen.route) {
-                            popUpTo(Screen.RepairListScreen.route) {
+                        navController.navigate(Screen.ReparationListScreen.route) {
+                            popUpTo(Screen.ReparationListScreen.route) {
                                 inclusive = true
                             }
                         }

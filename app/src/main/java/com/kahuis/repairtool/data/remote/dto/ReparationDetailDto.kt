@@ -1,8 +1,8 @@
 package com.kahuis.repairtool.data.remote.dto
 
-import com.kahuis.repairtool.domain.model.RepairDetail
+import com.kahuis.repairtool.domain.model.ReparationDetail
 
-data class RepairDetailDto(
+data class ReparationDetailDto(
     val id: String,
     val title: String,
     val description: String,
@@ -15,8 +15,8 @@ data class RepairDetailDto(
     val deleted_at: String
 )
 
-fun RepairDetailDto.toRepairDetail(): RepairDetail {
-    return RepairDetail(
+fun ReparationDetailDto.toReparationDetail(): ReparationDetail {
+    return ReparationDetail(
         id = id,
         title = title,
         description = description,

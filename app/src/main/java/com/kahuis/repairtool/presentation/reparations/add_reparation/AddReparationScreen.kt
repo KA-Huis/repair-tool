@@ -1,4 +1,4 @@
-package com.kahuis.repairtool.presentation.repairs.add_repair
+package com.kahuis.repairtool.presentation.reparations.add_reparation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -48,8 +48,8 @@ fun AddRepair(
                 backgroundColor = Color.Transparent,
                 navigationIcon = {
                     IconButton(onClick = {
-                        navController.navigate(Screen.RepairListScreen.route) {
-                            popUpTo(Screen.RepairListScreen.route) {
+                        navController.navigate(Screen.ReparationListScreen.route) {
+                            popUpTo(Screen.ReparationListScreen.route) {
                                 inclusive = true
                             }
                         }
@@ -76,8 +76,8 @@ fun AddRepair(
         floatingActionButton = {
             IconButton(
                 onClick = {
-                    navController.navigate(Screen.RepairListScreen.route) {
-                        popUpTo(Screen.RepairListScreen.route) {
+                    navController.navigate(Screen.ReparationListScreen.route) {
+                        popUpTo(Screen.ReparationListScreen.route) {
                             inclusive = true
                         }
                     }

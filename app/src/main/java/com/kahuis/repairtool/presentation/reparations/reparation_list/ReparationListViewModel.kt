@@ -1,22 +1,22 @@
-package com.kahuis.repairtool.presentation.repairs.repair_list
+package com.kahuis.repairtool.presentation.reparations.reparation_list
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kahuis.repairtool.common.Resource
-import com.kahuis.repairtool.domain.use_case.get_repairs.GetRepairsUseCase
+import com.kahuis.repairtool.domain.use_case.get_reparations.GetReparationsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class RepairListViewModel @Inject constructor(
-    private val getRepairsUseCase: GetRepairsUseCase
+class ReparationListViewModel @Inject constructor(
+    private val getRepairsUseCase: GetReparationsUseCase
 ) : ViewModel() {
-    private val _state = mutableStateOf(RepairListState())
-    val state: State<RepairListState> = _state
+    private val _state = mutableStateOf(ReparationListState())
+    val state: State<ReparationListState> = _state
 
     init {
         getRepairs()
@@ -26,15 +26,15 @@ class RepairListViewModel @Inject constructor(
         getRepairsUseCase().onEach { result ->
             when(result){
                 is Resource.Success -> {
-                    _state.value = RepairListState(repairs = result.data ?: emptyList())
+                    _state.value = ReparationListState(repairs = result.data ?: emptyList())
                 }
                 is Resource.Error -> {
-                    _state.value = RepairListState(
+                    _state.value = ReparationListState(
                         error = result.message ?: "Unexpected error"
                     )
                 }
                 is Resource.Loading -> {
-                    _state.value = RepairListState(isLoading = true)
+                    _state.value = ReparationListState(isLoading = true)
                 }
             }
         }.launchIn(viewModelScope)

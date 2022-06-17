@@ -1,6 +1,5 @@
-package com.kahuis.repairtool.presentation.repairs.repair_list
+package com.kahuis.repairtool.presentation.reparations.reparation_list
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -24,13 +23,13 @@ import androidx.navigation.NavController
 import com.kahuis.repairtool.common.Constants
 import com.kahuis.repairtool.common.Constants.repairId
 import com.kahuis.repairtool.common.navigation.Screen
-import com.kahuis.repairtool.presentation.repairs.repair_list.components.RepairListItem
+import com.kahuis.repairtool.presentation.reparations.reparation_list.components.RepairListItem
 
 
 @Composable
 fun RepairListScreen(
     navController: NavController,
-    viewModel: RepairListViewModel = hiltViewModel()
+    viewModel: ReparationListViewModel = hiltViewModel()
 ) {
     Scaffold(
         topBar = {
@@ -81,8 +80,8 @@ fun RepairListScreen(
         floatingActionButton = {
             IconButton(
                 onClick = {
-                    navController.navigate(Screen.AddRepairScreen.route) {
-                        popUpTo(Screen.AddRepairScreen.route) {
+                    navController.navigate(Screen.AddReparationScreen.route) {
+                        popUpTo(Screen.AddReparationScreen.route) {
                             inclusive = true
                         }
                     }
@@ -123,7 +122,7 @@ fun RepairListScreen(
                                 onItemClick = {
                                     repairId = repair.id
                                     navController.navigate(
-                                        Screen.RepairDetailScreen.withArgs(
+                                        Screen.ReparationDetailScreen.withArgs(
                                             repairId
                                         )
                                     )
