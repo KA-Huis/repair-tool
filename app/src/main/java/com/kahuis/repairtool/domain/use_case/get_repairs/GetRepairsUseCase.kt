@@ -16,7 +16,7 @@ class GetRepairsUseCase @Inject constructor(
     operator fun invoke(): Flow<Resource<List<Repair>>> = flow {
         try {
             emit(Resource.Loading<List<Repair>>())
-            val repairs = repository.getRepairs().map { it.toRepair() }
+            val repairs = repository.getReparations().map { it.toRepair() }
             emit(Resource.Success<List<Repair>>(repairs))
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "http exception"))

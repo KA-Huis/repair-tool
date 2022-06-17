@@ -16,7 +16,9 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.kahuis.repairtool.data.remote.dto.toRepair
 import com.kahuis.repairtool.domain.model.Repair
+import com.kahuis.repairtool.domain.model.RepairResponse
 
 @Composable
 fun RepairListItem(

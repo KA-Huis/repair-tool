@@ -1,5 +1,6 @@
 package com.kahuis.repairtool.presentation.repairs.repair_list
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -24,6 +25,7 @@ import com.kahuis.repairtool.common.Constants
 import com.kahuis.repairtool.common.Constants.repairId
 import com.kahuis.repairtool.common.navigation.Screen
 import com.kahuis.repairtool.presentation.repairs.repair_list.components.RepairListItem
+
 
 @Composable
 fun RepairListScreen(
@@ -105,15 +107,6 @@ fun RepairListScreen(
             }
         },
 
-//        //TODO delete this content and UNCOMMENT the real content!! T
-//        //This is to save some API requests :)
-//        content = {
-//            Text(
-//                text = "No content",
-//                color = MaterialTheme.colors.primary
-//            )
-//        },
-
         content = {
             Column(
                 modifier = Modifier
@@ -125,10 +118,10 @@ fun RepairListScreen(
                 Box(modifier = Modifier.fillMaxSize()) {
                     LazyColumn(modifier = Modifier.fillMaxSize()) {
                         items(state.repairs) { repair ->
-                            repairId = repair.id
                             RepairListItem(
                                 repair = repair,
                                 onItemClick = {
+                                    repairId = repair.id
                                     navController.navigate(
                                         Screen.RepairDetailScreen.withArgs(
                                             repairId
