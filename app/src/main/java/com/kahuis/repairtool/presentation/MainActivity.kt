@@ -1,19 +1,13 @@
 package com.kahuis.repairtool.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import com.kahuis.repairtool.common.Constants.MOCK_API_URL
 import com.kahuis.repairtool.common.navigation.Navigation
-import com.kahuis.repairtool.data.remote.RepairApi
-import com.kahuis.repairtool.domain.modelNew.RepairResponse
 import com.kahuis.repairtool.presentation.ui.theme.RepairToolTheme
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
