@@ -14,7 +14,6 @@ interface RepairApi {
     @GET("/get_repairs")
     fun getReparationList(): Call<RepairResponse>
 
-    //TODO RT #44, FIX detailed repairRequest
     //Get one single repair for detailed view
     @GET("/get_repair/{repairId}")
     suspend fun getRepair(@Path("repairId")repairId: String): RepairDetailDto

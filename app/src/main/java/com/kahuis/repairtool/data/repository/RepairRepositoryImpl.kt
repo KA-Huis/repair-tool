@@ -22,23 +22,25 @@ class RepairRepositoryImpl @Inject constructor(
 
     override suspend fun getReparations(): List<ReparationDto> {
         val reparationList = ArrayList<ReparationDto>()
-        val call = api.getReparationList()
-        val repairs = call.await()
-        for (reparation in repairs.reparations) {
-            reparationList.add(
-                ReparationDto(
-                    reparation.id,
-                    reparation.title,
-                    reparation.description,
-                    reparation.reporter_id,
-                    reparation.priority_type,
-                    reparation.space_id,
-                    reparation.status_type,
-                    reparation.updated_at,
-                    reparation.created_at,
-                    reparation.deleted_at
+        if (reparationList.isEmpty()){
+            val call = api.getReparationList()
+            val repairs = call.await()
+            for (reparation in repairs.reparations) {
+                reparationList.add(
+                    ReparationDto(
+                        reparation.id,
+                        reparation.title,
+                        reparation.description,
+                        reparation.reporter_id,
+                        reparation.priority_type,
+                        reparation.space_id,
+                        reparation.status_type,
+                        reparation.updated_at,
+                        reparation.created_at,
+                        reparation.deleted_at
+                    )
                 )
-            )
+            }
         }
         return reparationList
     }
