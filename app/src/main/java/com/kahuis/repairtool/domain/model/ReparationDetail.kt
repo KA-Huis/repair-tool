@@ -1,6 +1,6 @@
 package com.kahuis.repairtool.domain.model
 
-data class RepairDetail (
+data class ReparationDetail (
     val id: String,
     val title: String,
     val description: String,

@@ -1,4 +1,4 @@
-package com.kahuis.repairtool.presentation.repairs.repair_list.components
+package com.kahuis.repairtool.presentation.reparations.reparation_list.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,14 +16,12 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.kahuis.repairtool.data.remote.dto.toRepair
-import com.kahuis.repairtool.domain.model.Repair
-import com.kahuis.repairtool.domain.model.RepairResponse
+import com.kahuis.repairtool.domain.model.Reparation
 
 @Composable
 fun RepairListItem(
-    repair: Repair,
-    onItemClick: (Repair) -> Unit
+    repair: Reparation,
+    onItemClick: (Reparation) -> Unit
 ) {
     Row(
         modifier = Modifier

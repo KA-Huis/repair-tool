@@ -1,31 +1,21 @@
 package com.kahuis.repairtool.data.repository
 
-import android.util.Log
 import com.kahuis.repairtool.data.remote.dto.ReparationDto
-import com.kahuis.repairtool.data.remote.RepairApi
-import com.kahuis.repairtool.data.remote.dto.RepairDetailDto
-import com.kahuis.repairtool.data.remote.dto.toRepair
-import com.kahuis.repairtool.domain.model.Repair
-import com.kahuis.repairtool.domain.model.RepairResponse
-import com.kahuis.repairtool.domain.repository.RepairRepository
-import kotlinx.coroutines.suspendCancellableCoroutine
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.kahuis.repairtool.data.remote.ReparationApi
+import com.kahuis.repairtool.data.remote.dto.ReparationDetailDto
+import com.kahuis.repairtool.domain.repository.ReparationRepository
 import retrofit2.await
 import javax.inject.Inject
-import kotlin.coroutines.suspendCoroutine
 
-class RepairRepositoryImpl @Inject constructor(
-    private val api: RepairApi
-) : RepairRepository {
+class ReparationRepositoryImpl @Inject constructor(
+    private val api: ReparationApi
+) : ReparationRepository {
 
     override suspend fun getReparations(): List<ReparationDto> {
         val reparationList = ArrayList<ReparationDto>()
         if (reparationList.isEmpty()){
-            val call = api.getReparationList()
-            val repairs = call.await()
-            for (reparation in repairs.reparations) {
+            val call = api.getReparationList().await()
+            for (reparation in call.reparations) {
                 reparationList.add(
                     ReparationDto(
                         reparation.id,
@@ -45,7 +35,7 @@ class RepairRepositoryImpl @Inject constructor(
         return reparationList
     }
 
-    override suspend fun getRepair(repairId: String): RepairDetailDto {
-        return api.getRepair(repairId)
+    override suspend fun getRepair(repairId: String): ReparationDetailDto {
+        return api.getReparation(repairId)
     }
 }

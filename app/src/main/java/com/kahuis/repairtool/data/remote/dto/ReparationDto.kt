@@ -1,7 +1,7 @@
 package com.kahuis.repairtool.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
-import com.kahuis.repairtool.domain.model.Repair
+import com.kahuis.repairtool.domain.model.Reparation
 
 data class ReparationDto(
     @SerializedName("id")
@@ -35,8 +35,8 @@ data class ReparationDto(
     val deleted_at: String
 )
 
-fun ReparationDto.toRepair(): Repair {
-    return Repair(
+fun ReparationDto.toReparation(): Reparation {
+    return Reparation(
         id = id,
         title = title,
         description = description,

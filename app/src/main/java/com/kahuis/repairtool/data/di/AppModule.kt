@@ -1,9 +1,9 @@
 package com.kahuis.repairtool.data.di
 
 import com.kahuis.repairtool.common.Constants.MOCK_API_URL
-import com.kahuis.repairtool.data.remote.RepairApi
-import com.kahuis.repairtool.data.repository.RepairRepositoryImpl
-import com.kahuis.repairtool.domain.repository.RepairRepository
+import com.kahuis.repairtool.data.remote.ReparationApi
+import com.kahuis.repairtool.data.repository.ReparationRepositoryImpl
+import com.kahuis.repairtool.domain.repository.ReparationRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,17 +18,17 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepairApi(): RepairApi {
+    fun provideRepairApi(): ReparationApi {
         return Retrofit.Builder()
             .baseUrl(MOCK_API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(RepairApi::class.java)
+            .create(ReparationApi::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideRepairRepository(api: RepairApi): RepairRepository {
-        return RepairRepositoryImpl(api)
+    fun provideReparationRepository(api: ReparationApi): ReparationRepository {
+        return ReparationRepositoryImpl(api)
     }
 }

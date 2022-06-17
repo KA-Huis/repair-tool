@@ -81,7 +81,7 @@ fun LoginScreen(
             IconButton(
             onClick = {
                 if (userName != "")
-                    navController.navigate(Screen.RepairListScreen.route)
+                    navController.navigate(Screen.ReparationListScreen.route)
                 else
                     text = "Vul een gebruikersnaam in."
             },
