@@ -19,5 +19,3 @@ Write a short description of your userstory.
 2. Criteria 2 ...
 
 ### Tools
-
-

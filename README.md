@@ -47,4 +47,5 @@ This project is licensed under the MIT License - ~~see the LICENSE.md file for d
 
 ~~see the Changelog for details~~
 
-
+## CodeFactor
+[![CodeFactor](https://www.codefactor.io/repository/github/ka-huis/repair-tool/badge)](https://www.codefactor.io/repository/github/ka-huis/repair-tool)

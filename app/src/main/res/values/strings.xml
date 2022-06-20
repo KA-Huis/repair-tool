@@ -1,5 +1,3 @@
 <resources>
-    <string name="app_name">RepairTool</string>
-    <string name="Login">Login</string>
-    <string name="title_activity_repair">RepairActivity</string>
+    <string name="app_name">KA-Huis</string>
 </resources>
